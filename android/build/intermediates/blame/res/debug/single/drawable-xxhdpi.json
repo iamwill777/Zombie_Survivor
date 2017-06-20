@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/yaolu/Documents/projects/libgdx/zombie/android/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/res/drawable-xxhdpi/ic_launcher.png"
+    }
+]

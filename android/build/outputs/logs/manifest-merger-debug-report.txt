@@ -1,0 +1,101 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:2:1-34:12
+	package
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:3:5-34
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+uses-sdk
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:5:5-73
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] /Users/yaolu/.android/build-cache/5f67f0f23462b6e1a36161d6e14f077836da1be3/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/yaolu/.android/build-cache/e79810d2cf75fca727e5d9cdcf4281f5b1b9d981/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/yaolu/.android/build-cache/dd2b217e6131a37e3964cc54df794ea78334a754/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/yaolu/.android/build-cache/4d63e2c6eab649b8ba7fe8470a7dd665f8f518a9/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/yaolu/.android/build-cache/fc51567aa541ea41dc9a96abc2923b3194eb2293/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/7ced63da018a6a309a7795a46b64d86a6fa93953/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/951cf4de74658e7e3f8b615e17a8bb89cb29f616/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] /Users/yaolu/.android/build-cache/d725b41d56facc5966bf3b2faac179bce5ce014e/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/yaolu/.android/build-cache/c86c7e5634fb003d23c43281a5f106659f836c6b/output/AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:5:41-70
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:5:15-40
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+		INJECTED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml
+application
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:7:5-32:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/yaolu/.android/build-cache/5f67f0f23462b6e1a36161d6e14f077836da1be3/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/yaolu/.android/build-cache/e79810d2cf75fca727e5d9cdcf4281f5b1b9d981/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/yaolu/.android/build-cache/dd2b217e6131a37e3964cc54df794ea78334a754/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/yaolu/.android/build-cache/4d63e2c6eab649b8ba7fe8470a7dd665f8f518a9/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/yaolu/.android/build-cache/fc51567aa541ea41dc9a96abc2923b3194eb2293/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/7ced63da018a6a309a7795a46b64d86a6fa93953/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/951cf4de74658e7e3f8b615e17a8bb89cb29f616/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /Users/yaolu/.android/build-cache/d725b41d56facc5966bf3b2faac179bce5ce014e/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/yaolu/.android/build-cache/c86c7e5634fb003d23c43281a5f106659f836c6b/output/AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:10:9-41
+	android:allowBackup
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:8:9-35
+	android:icon
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:9:9-45
+	android:theme
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:11:9-40
+activity#com.somoplay.zombie.AndroidLauncher
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:13:9-18:20
+	android:screenOrientation
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:16:13-50
+	android:label
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:15:13-45
+	android:configChanges
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:17:13-83
+	android:name
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:14:13-63
+activity#com.somoplay.zombie.MainActivity
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:20:9-30:20
+	android:screenOrientation
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:23:13-49
+	android:label
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:22:13-45
+	android:configChanges
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:24:13-83
+	android:name
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:21:13-60
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:26:13-29:29
+action#android.intent.action.MAIN
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:27:17-69
+	android:name
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:27:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:28:17-77
+	android:name
+		ADDED from /Users/yaolu/Documents/projects/eadate/zombie_android_june/android/AndroidManifest.xml:28:27-74
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/yaolu/.android/build-cache/5f67f0f23462b6e1a36161d6e14f077836da1be3/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/yaolu/.android/build-cache/e79810d2cf75fca727e5d9cdcf4281f5b1b9d981/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/yaolu/.android/build-cache/dd2b217e6131a37e3964cc54df794ea78334a754/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/yaolu/.android/build-cache/4d63e2c6eab649b8ba7fe8470a7dd665f8f518a9/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/yaolu/.android/build-cache/fc51567aa541ea41dc9a96abc2923b3194eb2293/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/7ced63da018a6a309a7795a46b64d86a6fa93953/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/yaolu/.android/build-cache/951cf4de74658e7e3f8b615e17a8bb89cb29f616/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] /Users/yaolu/.android/build-cache/d725b41d56facc5966bf3b2faac179bce5ce014e/output/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/AndroidManifest.xml:26:9-47

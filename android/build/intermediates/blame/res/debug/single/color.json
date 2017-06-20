@@ -1,0 +1,266 @@
+[
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/color/abc_btn_colored_text_material.xml"
+    }
+]

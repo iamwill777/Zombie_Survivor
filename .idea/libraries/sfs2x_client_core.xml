@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sfs2x-client-core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/android/libs/sfs2x-client-core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
