@@ -28,7 +28,7 @@ public class SPSpriteManager {
 
     public SPSpriteManager(SPGameScene main) {
         mMain = main;
-        mPlayer = new SPPlayer(true, "John Snow", 0, 0);       // for mSPain player
+        mPlayer = new SPPlayer(true, "Snow", 0, 0);       // for mSPain player
         mlstZombie = new ArrayList<SPZombie>();
         mlstPlayers = new ArrayList<SPPlayer>();
         random = new Random();
