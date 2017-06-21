@@ -19,13 +19,15 @@ public class SPZombie extends Sprite {
     private Texture textureZombie;
     private Texture textureHpBar;
     private Rectangle hitBox;
-    private Integer health;
+    private Integer mHealth;
+    private int mIndex;
 
 
     private Animation animation;
     private float timePassed = 0;
     private float faceRight = 1; //faceRight == 1; faceLeft == -1;
     private boolean canMove = true;
+    private boolean isAlive = true;
 
 
     //Enemy State;
@@ -38,11 +40,12 @@ public class SPZombie extends Sprite {
     private State previousState;
 
 
-    public SPZombie(float x, float y) {
+    public SPZombie(int index, float x, float y, int health) {
+        mIndex = index;
         textureZombie = SPAssetManager.getInstance().getZombie();
         textureHpBar = SPAssetManager.getInstance().getHealthBar();
         hitBox = new Rectangle(x, y, 50, 100);
-        health = 5;
+        mHealth = health;
 
         animation = SPAssetManager.getInstance().getAniZombieRight();
         currentState = State.MOVE_RIGHT;
@@ -59,16 +62,16 @@ public class SPZombie extends Sprite {
                 hitBox.getWidth(),hitBox.getHeight(),              //Size
                 faceRight,1,0                                      //Scale
         );
-        timePassed = currentState ==previousState? timePassed+= Gdx.graphics.getDeltaTime():0;
+        timePassed = currentState ==previousState? timePassed+=Gdx.graphics.getDeltaTime():0;
         previousState = currentState;
 
         //Draw Hp bar;
-        spritebatch.draw(textureHpBar,hitBox.getX()-18,hitBox.getY()+100,80*(health/5.f),10);
+        spritebatch.draw(textureHpBar,hitBox.getX()-18,hitBox.getY()+100,80*(mHealth/5.f),10);
 
     }
 
 
-    public void update(float delta,SPPlayer player) {
+    public void update(float delta, SPPlayer player, boolean isConnected) {
 
         switch (currentState){
             case MOVE_LEFT:
@@ -88,7 +91,7 @@ public class SPZombie extends Sprite {
         }
 
 
-        if(canMove) {
+        if(canMove && !isConnected) {
             chasePlayer(player);
         }
 
@@ -155,15 +158,17 @@ public class SPZombie extends Sprite {
     }
 
     public void hit(int damage){
-        health-=damage;
+        mHealth-=damage;
     }
 
     public Integer getHealth(){
-        return health;
+        return mHealth;
     }
     public Rectangle getHitBox() {
         return hitBox;
     }
-
-
+    public void setHitBox(float x, float y) { hitBox.setX(x); hitBox.setY(y); }
+    public int getMonsterIndex() { return mIndex; }
+    public void setDead() { isAlive = false; }
+    public boolean isAlive() { return isAlive; }
 }

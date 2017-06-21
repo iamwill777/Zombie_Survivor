@@ -21,12 +21,20 @@ public class SPMessageHandler extends SPSocketManager{
         initOnReviceDataHandler();
     }
 
+    public boolean isConnected() {
+        return mSocket.connected();
+    }
+
     public void initOnReviceDataHandler() {
         onNotifyLogin();
         onNotifyPlayerLocation();
         onUserLeaveFromRoom();
+        onNotifyMonsters();
+        onNotifyPlayerShooting();
+        onChasePlayer();
     }
 
+    // receive messages from server
     public void onNotifyLogin() {
         List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
         lstListener.add(new SPDataListener() {
@@ -43,7 +51,7 @@ public class SPMessageHandler extends SPSocketManager{
         lstListener.add(new SPDataListener() {
             @Override
             public void receiveData(SPDataEvent event) {
-                SPMessageHandler.super.mMain.socketHandler("notify moving", event.getMessage());
+                SPMessageHandler.super.mMain.socketHandler("notify user left", event.getMessage());
             }
         });
         super.mMapListeners.put("onUserLeaveFromRoom", lstListener);
@@ -60,14 +68,48 @@ public class SPMessageHandler extends SPSocketManager{
         super.mMapListeners.put("onNotifyPlayerLocation", lstListener);
     }
 
-    public void requestAttempLogin(String userName, float X, float Y, SPDataCallback func) {
+    public void onNotifyMonsters() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                SPMessageHandler.super.mMain.socketHandler("notify monsters", event.getMessage());
+            }
+        });
+        super.mMapListeners.put("onNotifyMonsters", lstListener);
+    }
+
+    public void onNotifyPlayerShooting() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                SPMessageHandler.super.mMain.socketHandler("notify player shooing", event.getMessage());
+            }
+        });
+        super.mMapListeners.put("onNotifyPlayerShooting", lstListener);
+    }
+
+    public void onChasePlayer() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                SPMessageHandler.super.mMain.socketHandler("notify chase player", event.getMessage());
+            }
+        });
+        super.mMapListeners.put("onChasePlayer", lstListener);
+    }
+
+    // request messages to server
+    public void requestAttempLogin(SPDataCallback func) {
 
         JSONObject requestLogin = new JSONObject();
         try {
             requestLogin.put("rid", 1);
-            requestLogin.put("username", userName);
-            requestLogin.put("X", X);
-            requestLogin.put("Y", Y);
+            requestLogin.put("username", mMain.getSPSpriteManager().getPlayer().getUserName());
+            requestLogin.put("X", mMain.getSPSpriteManager().getPlayer().getX());
+            requestLogin.put("Y", mMain.getSPSpriteManager().getPlayer().getY());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -84,5 +126,27 @@ public class SPMessageHandler extends SPSocketManager{
             e.printStackTrace();
         }
         notifyMessage("room.roomHandler.notifyPlayerLocation", ntfUserPosition);
+    }
+
+    public void notifyPlayerShooting(float fX, float fY, float angle) {
+        JSONObject ntfPlayerShooting = new JSONObject();
+        try {
+            ntfPlayerShooting.put("X", fX);
+            ntfPlayerShooting.put("Y", fY);
+            ntfPlayerShooting.put("angle", angle);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        notifyMessage("room.roomHandler.notifyPlayerShooting", ntfPlayerShooting);
+    }
+
+    public void requestKilledMonster(int monsterIndex, SPDataCallback func) {
+        JSONObject requestKilledMonster = new JSONObject();
+        try {
+            requestKilledMonster.put("idKilledMonster", monsterIndex);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request("room.roomHandler.requestKilledMonster", requestKilledMonster, func);
     }
 }

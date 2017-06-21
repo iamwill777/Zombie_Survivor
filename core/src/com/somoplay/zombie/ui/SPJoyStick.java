@@ -34,7 +34,7 @@ public class SPJoyStick {
     private Drawable touchShootingBackground;
     private Drawable touchShootingKnob;
 
-    private float blockSpeed;
+    public static float blockSpeed = 5.0f;
     private SPPlayer player;
     private SpriteBatch spriteBatch;
     private OrthographicCamera camera; //2D camera
@@ -103,8 +103,6 @@ public class SPJoyStick {
         player.setPosition((SPMap.width*15-player.getWidth())/2.0f, (SPMap.height*15-player.getHeight())/2.0f);
         this.camera = camera;
         camera.update();
-
-        blockSpeed = 5;
     }
 
     public void render (OrthographicCamera camera) {
@@ -132,6 +130,9 @@ public class SPJoyStick {
                         Vector2 v = new Vector2(tpShooting.getKnobPercentX(), tpShooting.getKnobPercentY());
                         player.AddBullet(player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
                         player.changeDirection(v.angle());
+
+                        // send to message
+                        mGameScreen.getSPMessageHandler().notifyPlayerShooting(player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
                     }
                 }, 0.0f, 0.2f);
             }
@@ -160,7 +161,6 @@ public class SPJoyStick {
 
     public void checkBounds() {
 
-        //float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) Gdx.graphics.getWidth()-player.getWidth(), topRightY = (float) Gdx.graphics.getHeight()-player.getHeight();
         float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) SPMap.width*15-player.getWidth(), topRightY = (float) SPMap.height*15-player.getHeight();
 
         if (player.getX() <= bottomLeftX || player.getX() >= topRightX) {
@@ -168,8 +168,9 @@ public class SPJoyStick {
         }
         else {
             float positionX = player.getX() + tpDirection.getKnobPercentX()*blockSpeed;
-            if (positionX >= 0 && positionX <= topRightX)
+            if (positionX >= 0 && positionX <= topRightX) {
                 player.setX(positionX);
+            }
         }
 
         if (player.getY() <= bottomLeftY || player.getY()+90 >= topRightY) {
@@ -177,27 +178,12 @@ public class SPJoyStick {
         }
         else {
             float positionY = player.getY() + tpDirection.getKnobPercentY()*blockSpeed;
-            if (positionY >= 0 && positionY +90 <= topRightY)
+            if (positionY >= 0 && positionY +90 <= topRightY) {
                 player.setY(positionY);
+            }
         }
 
-        // send player's position to server
-        if (tpDirection.isTouched()) {
-            timeForPlayerLocation += Gdx.graphics.getDeltaTime();
-        }
-        //timeForPlayerLocation += Gdx.graphics.getDeltaTime();
-
-
-//        if (timeForPlayerLocation >= 0.01 && tpDirection.isTouched()) {
-//            Vector2 v = new Vector2(tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY());
-//            mGameScreen.getMessageHandler().notifyPlayerPosition(player.getX(), player.getY(), v.angle());
-//            timeForPlayerLocation = 0;
-//        }
-//
-//        if (!tpDirection.isTouched() && timeForPlayerLocation != 0) {
-//            Vector2 v = new Vector2(tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY());
-//            mGameScreen.getMessageHandler().notifyPlayerPosition(player.getX(), player.getY(), v.angle());
-//            timeForPlayerLocation = 0;
-//        }
+        if (tpDirection.isTouched())
+            mGameScreen.getSPMessageHandler().notifyPlayerPosition(tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), 0);
     }
 }
