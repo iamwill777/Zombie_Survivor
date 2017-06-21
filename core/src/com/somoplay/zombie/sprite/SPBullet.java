@@ -13,8 +13,10 @@ public class SPBullet {
     float angle;
     float time;
     int speed;
+    boolean mIsAlive;
 
     public SPBullet(float x, float y, float angle) {
+        mIsAlive = true;
         this.angle = angle;
         time = 2;
         speed = 300;
@@ -31,9 +33,8 @@ public class SPBullet {
         time -= delta;
     }
 
-    public boolean isDead() {
-        if (time < 0) return true;
-        return false;
+    public void setDead() {
+        mIsAlive = false;
     }
 
     public void draw(SpriteBatch batch) {

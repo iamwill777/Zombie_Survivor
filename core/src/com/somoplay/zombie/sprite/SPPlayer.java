@@ -47,6 +47,7 @@ public class SPPlayer extends Sprite {
     private Integer health;
     private Integer weaponPower;
     private MovingPosition posPrev = null;
+    private boolean isAlive = true;
 
     //Hp Bar
     private Texture hpBarTexture;
@@ -171,7 +172,7 @@ public class SPPlayer extends Sprite {
         hpBarBorder.draw(spritebatch);
     }
 
-    public Boolean updateBullets(ArrayList<SPZombie> lstZombie) {
+    public int updateBullets(ArrayList<SPZombie> lstZombie) {
         for(SPBullet bullet: bulletArrayList) {
             bullet.update(Gdx.graphics.getDeltaTime());
 
@@ -180,27 +181,28 @@ public class SPPlayer extends Sprite {
                 if(zombie.getHitBox().overlaps(bullet.getHitBox())) {
                     zombie.hit(weaponPower);
                     if (zombie.getHealth()<=0) {
-                        lstZombie.remove(zombie);
-                        bulletArrayList.remove(bullet);
-                        return true;
+                        bullet.setDead();
+
+                        // send message to server, to kill zombies with index
+                        return zombie.getMonsterIndex();
                     }
-                    bulletArrayList.remove(bullet);
-                    return false;
+                    bullet.setDead();
+                    return -1;
                 }
             }
 
-            // check bounds and remove it in bulletArrayList
+            // check bounds and remove it in lstBullet
             float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) SPMap.width*15, topRightY = (float) SPMap.height*15;
             if (bullet.getHitBox().getX() <= bottomLeftX || bullet.getHitBox().getX() >= topRightX) {
-                bulletArrayList.remove(bullet);
-                return false;
+                bullet.setDead();
+                return -1;
             }
             else if (bullet.getHitBox().getY() <= bottomLeftY || bullet.getHitBox().getY() >= topRightY) {
-                bulletArrayList.remove(bullet);
-                return false;
+                bullet.setDead();
+                return -1;
             }
         }
-        return false;
+        return -1;
     }
 
     public float getShootingAngle() { return saveShootingAngle; }
@@ -253,4 +255,6 @@ public class SPPlayer extends Sprite {
     public void Hit(int i) {
         health-=i;
     }
+    public void setDead() { isAlive = false; }
+    public boolean isAlive() { return isAlive; }
 }

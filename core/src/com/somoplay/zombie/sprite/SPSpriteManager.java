@@ -1,11 +1,15 @@
 package com.somoplay.zombie.sprite;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.somoplay.zombie.main.SPGameScene;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.scene.SPMapConstant;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.SPDataCallback;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,25 +24,65 @@ public class SPSpriteManager {
     private ArrayList<SPPlayer> mlstPlayers;       // for other players
     private ArrayList<SPZombie> mlstZombie;
     private Random random;
+    private SPGameScene mMain;
 
     public SPSpriteManager(SPGameScene main) {
-        mPlayer = new SPPlayer(true, main.UserName, 0, 0);       // for mSPain player
+        mMain = main;
+        mPlayer = new SPPlayer(true, "John Snow", 0, 0);       // for mSPain player
         mlstZombie = new ArrayList<SPZombie>();
         mlstPlayers = new ArrayList<SPPlayer>();
         random = new Random();
+    }
 
-        for (int i=0; i<3; i++) {
-            addZombie(Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE));
+    public void createStandaloneZombies(int count) {
+        for (int i=0; i<=count; i++) {
+            addZombie(i, Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE), 5);
         }
     }
 
-    public void addZombie(float fX, float fY) {
-        mlstZombie.add(new SPZombie(fX, fY));
+    public void addZombie(int index, float fX, float fY, int health) {
+        mlstZombie.add(new SPZombie(index, fX, fY, health));
     }
 
     public void addPlayers(SPPlayer newPlayer) {
-        if (newPlayer.getUserName() != mPlayer.getUserName())
+        if (newPlayer.getUserName().equals(mPlayer.getUserName()) == false)
             mlstPlayers.add(newPlayer);
+    }
+
+    public void chasePlayer(int mobIndex, float fX, float fY) {
+        for(SPZombie zombie: mlstZombie) {
+            if (zombie.getMonsterIndex() == mobIndex) {
+                zombie.setHitBox(fX, fY);
+                return;
+            }
+        }
+    }
+
+    public void addBullets(String username, float x, float y, float angle) {
+        for(SPPlayer player: mlstPlayers) {
+            if (player.getUserName().equals(username)) {
+                player.AddBullet(x, y, angle);
+            }
+        }
+    }
+
+    public void removePlayers(String username) {
+        for(SPPlayer player: mlstPlayers) {
+            if (player.getUserName().equals(username)) {
+                player.setDead();
+                break;
+            }
+        }
+    }
+
+    public void removeMonster(int index) {
+        for(SPZombie zombie: mlstZombie) {
+            if (index == zombie.getMonsterIndex()) {
+                Gdx.app.log("ERROR", "Zombie killed: " + index);
+                zombie.setDead();
+                break;
+            }
+        }
     }
 
     public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -100,14 +144,24 @@ public class SPSpriteManager {
     }
 
     public void updateBullets() {
-        if (mPlayer.updateBullets(mlstZombie)) {
-            //addZombie();
+        int monsterIndex = mPlayer.updateBullets(mlstZombie);
+        if (monsterIndex >= 0) {
+            removeMonster(monsterIndex);
+            mMain.getSPMessageHandler().requestKilledMonster(monsterIndex, new SPDataCallback() {
+                @Override
+                public void responseData(JSONObject message) {
+                }
+            });
+        }
+
+        for(SPPlayer player: mlstPlayers) {
+            player.updateBullets(mlstZombie);
         }
     }
 
     public void updateEnemy(float dt) {
         for(SPZombie zombie: mlstZombie){
-            zombie.update(dt, mPlayer);
+            zombie.update(dt, mPlayer, mMain.getSPMessageHandler().isConnected());
         }
     }
 

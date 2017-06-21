@@ -37,12 +37,6 @@ public class SPGameScene implements Screen
 
     private SPMainListener spMainListener;
 
-    public static final String CHAT_SERVER_URL = "http://10.0.2.2:3010/";
-    //public static final String CHAT_SERVER_URL = "http://10.51.205.75:3010/";
-    //public static final String CHAT_SERVER_URL = "http://192.168.0.103:13337/";
-
-    public static final String UserName = "Snow John";
-
     public SPSpriteManager getSPSpriteManager(){
         return spSpriteManager;
     }
@@ -105,6 +99,9 @@ public class SPGameScene implements Screen
         spSpriteManager = new SPSpriteManager(this);
         spJoyStick = new SPJoyStick(spSpriteManager.getPlayer(), this.camera, this);
         spMiniMap = new SPMiniMap(spriteBatch, spSpriteManager);
+
+        spMessageHandler = new SPMessageHandler(this);
+        getSPMessageHandler().connect();
     }
 
     private void updateCamera() {
@@ -165,32 +162,63 @@ public class SPGameScene implements Screen
     }
 
     public void socketHandler(String type, Object... args) {
-        if (type == "notify spawn zombie") {
-            JSONObject data = (JSONObject) args[0];
-            try {
-                JSONObject position = data.getJSONObject("zombiePosition");
-                float fX = position.getInt("X");
-                float fY = position.getInt("Y");
-                Gdx.app.log("SOCKET.IO", "position: " + fX + ", " + fY);
-                this.spSpriteManager.addZombie(fX, fY);
-            } catch (JSONException e) {
-                return;
-            }
-        }
-        else if (type == "answer login") {      // answer to add userlist
+        if (type == "answer login") {      // answer to add userlist
             JSONObject data = (JSONObject) args[0];
             try {
                 JSONArray users = data.getJSONArray("users");
                 if(users != null && users.length() > 0) {
                     for(int i=0; i<users.length(); i++) {
                         JSONObject objectInArray = users.getJSONObject(i);
-                        Gdx.app.log("SOCKET.IO", "username: " + objectInArray.getString("user_name"));
+                        //Gdx.app.log("SOCKET.IO", "username: " + objectInArray.getString("user_name"));
                         SPPlayer newPlayer = new SPPlayer(false, objectInArray.getString("user_name"), objectInArray.getDouble("posX"), objectInArray.getDouble("posY"));
-                        this.spSpriteManager.addPlayers(newPlayer);
+                        this.getSPSpriteManager().addPlayers(newPlayer);
+                    }
+                }
+
+                JSONArray monsters = data.getJSONArray("monsters");
+                if (monsters != null && monsters.length() > 0) {
+                    for(int i=0; i<monsters.length(); i++) {
+                        JSONObject objectInArray = monsters.getJSONObject(i);
+                        this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float)objectInArray.getDouble("posX"), (float)objectInArray.getDouble("posY"), objectInArray.getInt("health"));
                     }
                 }
             } catch (JSONException e) {
                 return;
+            }
+        }
+        else if (type == "notify player shooing" ) {
+            JSONObject data = (JSONObject) args[0];
+            try {
+                JSONObject body = data.getJSONObject("body");
+                this.getSPSpriteManager().addBullets(body.getString("username"), (float)body.getDouble("X"), (float)body.getDouble("Y"), (float)body.getDouble("angle"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (type == "notify monsters") {
+            JSONObject data = (JSONObject) args[0];
+            try {
+                JSONObject body = data.getJSONObject("body");
+                this.getSPSpriteManager().removeMonster(body.getInt("killedMonster"));
+
+                JSONArray monsters = body.getJSONArray("monsters");
+                if (monsters != null && monsters.length() > 0) {
+                    for(int i=0; i<monsters.length(); i++) {
+                        JSONObject objectInArray = monsters.getJSONObject(i);
+                        this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float)objectInArray.getDouble("posX"), (float)objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (type == "notify chase player") {
+            JSONObject data = (JSONObject) args[0];
+            try {
+                JSONObject body = data.getJSONObject("body");
+                this.getSPSpriteManager().chasePlayer(body.getInt("mobIndex"), (float)body.getDouble("posX"), (float)body.getDouble("posY"));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
         else if (type == "notify login") {      // notify to add new_user
@@ -198,7 +226,7 @@ public class SPGameScene implements Screen
             try {
                 JSONObject newUser = data.getJSONObject("body");
                 SPPlayer newPlayer = new SPPlayer(false, newUser.getString("user_name"), newUser.getDouble("posX"), newUser.getDouble("posY"));
-                this.spSpriteManager.addPlayers(newPlayer);
+                this.getSPSpriteManager().addPlayers(newPlayer);
             } catch (JSONException e) {
                 return;
             }
@@ -214,7 +242,19 @@ public class SPGameScene implements Screen
                 fY = Float.valueOf(String.valueOf(data.getString("Y")));
                 fAngle = Float.valueOf(String.valueOf(data.getString("angle")));
                 //Gdx.app.log("SOCKET.IO", "name: " + username + ", position X: " + fX + ", position Y: " + fY + ", angle: " + fAngle);
-                this.spSpriteManager.setPlayerPosition(username, fX, fY, fAngle);
+                this.getSPSpriteManager().setPlayerPosition(username, fX, fY, fAngle);
+            } catch (JSONException e) {
+                return;
+            }
+        }
+        else if (type == "notify user left") {
+            JSONObject packet = (JSONObject) args[0];
+            String username;
+            float fX, fY, fAngle;
+            try {
+                JSONObject data = packet.getJSONObject("body");
+                username = data.getString("user");
+                this.getSPSpriteManager().removePlayers(username);
             } catch (JSONException e) {
                 return;
             }

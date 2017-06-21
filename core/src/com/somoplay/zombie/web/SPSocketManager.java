@@ -22,12 +22,18 @@ import io.socket.emitter.Emitter;
 public class SPSocketManager {
 
     private final static String JSONARRAY_FLAG = "[";
-    private Socket mSocket;
-    private Boolean mIsConnected = true;
+    protected Socket mSocket;
+    private Boolean mIsConnected = false;
     protected SPGameScene mMain;
     private int mReqId;
     protected Map<Integer, SPDataCallback> mMapCbs;
     protected Map<String, List<SPDataListener>> mMapListeners;
+
+    public static final String SERVER_URL = "http://10.0.2.2:3010/";
+    //public static final String CHAT_SERVER_URL = "http://10.51.205.75:3010/";
+    //public static final String CHAT_SERVER_URL = "http://192.168.0.103:13337/";
+
+    public static final String UserName = "Snow John";
 
     public SPSocketManager(SPGameScene main) {
 
@@ -37,9 +43,9 @@ public class SPSocketManager {
         mMain = main;
     }
 
-    public Boolean connect(String address) {
+    public void connect() {
         try {
-            mSocket = IO.socket(address);
+            mSocket = IO.socket(SERVER_URL);
 
             mSocket.on(Socket.EVENT_CONNECT, onConnect);
             mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
@@ -47,7 +53,6 @@ public class SPSocketManager {
             mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
             mSocket.on(Socket.EVENT_MESSAGE, onMessage);
             mSocket.connect();
-            return true;
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -117,6 +122,13 @@ public class SPSocketManager {
         public void call(Object... args) {
             if (!mIsConnected) {
                 mIsConnected = true;
+
+                mMain.getSPMessageHandler().requestAttempLogin(new SPDataCallback() {
+                    @Override
+                    public void responseData(JSONObject message) {
+                        mMain.socketHandler("answer login", message);
+                    }
+                });
             }
         }
     };
@@ -133,8 +145,14 @@ public class SPSocketManager {
         @Override
         public void call(Object... args) {
             Gdx.app.log("DEBUG", "connection is terminated. : " + args.toString());
+            mIsConnected = false;
+
+            if (mMain.getSPSpriteManager().getZombie().size() <= 0) {
+                mMain.getSPSpriteManager().createStandaloneZombies(5);
+            }
         }
     };
+
 
     private Emitter.Listener onMessage = new Emitter.Listener() {
         @Override
@@ -161,7 +179,8 @@ public class SPSocketManager {
                 if(cb != null)
                     cb.responseData(jsonObject.getJSONObject("body"));
                 else {
-                    emit(jsonObject.getJSONObject("body").getString("route"), jsonObject);
+                    if (!jsonObject.isNull("body") && !jsonObject.isNull("msg"))
+                        emit(jsonObject.getJSONObject("body").getString("msg"), jsonObject);
                 }
                 mMapCbs.remove(id);
             }
