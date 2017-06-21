@@ -28,10 +28,19 @@ public class SPSpriteManager {
 
     public SPSpriteManager(SPGameScene main) {
         mMain = main;
-        mPlayer = new SPPlayer(true, "John Snow", 0, 0);       // for mSPain player
+        random = new Random();
+        mPlayer = new SPPlayer(true, makeRandomUserName(), 0, 0);       // for mSPain player
         mlstZombie = new ArrayList<SPZombie>();
         mlstPlayers = new ArrayList<SPPlayer>();
-        random = new Random();
+    }
+
+    private String makeRandomUserName() {
+        String name = "TEST_";
+
+        for(int i=0; i<6; i++) {
+            name += Integer.toString(random.nextInt(10));
+        }
+        return name;
     }
 
     public void createStandaloneZombies(int count) {
