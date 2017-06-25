@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by shoong on 2017-06-06.
@@ -102,7 +103,19 @@ public class SPMessageHandler extends SPSocketManager{
     }
 
     // request messages to server
+    public void requestConnectorInfo(SPDataCallback func) {
+        Random random = new Random();
+        JSONObject requestConnectorInfo = new JSONObject();
+        try {
+            requestConnectorInfo.put("uid", random.nextInt() % 1000000);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request("gate.gateHandler.queryEntry", requestConnectorInfo, func);
+    }
+
     public void requestAttempLogin(SPDataCallback func) {
+
 
         JSONObject requestLogin = new JSONObject();
         try {

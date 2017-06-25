@@ -1,5 +1,6 @@
 package com.somoplay.zombie.web;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.somoplay.zombie.main.SPGameScene;
 
 import org.json.JSONArray;
@@ -28,10 +29,11 @@ public class SPSocketManager {
     private int mReqId;
     protected Map<Integer, SPDataCallback> mMapCbs;
     protected Map<String, List<SPDataListener>> mMapListeners;
+    private int mState = -1;  // for gate server and connector server
 
-    public static final String SERVER_URL = "http://10.0.2.2:3010/";
-    //public static final String CHAT_SERVER_URL = "http://10.51.205.75:3010/";
-    //public static final String CHAT_SERVER_URL = "http://192.168.0.103:13337/";
+    public static final String GATE_SERVER_URL = "http://10.0.2.2:3014/";
+    //public static final String GATE_SERVER_URL = "http://10.51.205.75:3014/";
+    //public static final String GATE_SERVER_URL = "http://192.168.0.103:3014/";
 
     public static final String UserName = "Snow John";
 
@@ -45,7 +47,7 @@ public class SPSocketManager {
 
     public void connect() {
         try {
-            mSocket = IO.socket(SERVER_URL);
+            mSocket = IO.socket(GATE_SERVER_URL);
 
             mSocket.on(Socket.EVENT_CONNECT, onConnect);
             mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
@@ -122,13 +124,39 @@ public class SPSocketManager {
         public void call(Object... args) {
             if (!mIsConnected) {
                 mIsConnected = true;
+                if (mState < 1) {       // get host and port from gate server
+                    mMain.getSPMessageHandler().requestConnectorInfo(new SPDataCallback() {
+                        @Override
+                        public void responseData(JSONObject message) {
+                            mState = 1;
+                            String host = "10.2.2.0"; //message.getString("host");
+                            int ip = 1023; //message.getInt("port");
 
-                mMain.getSPMessageHandler().requestAttempLogin(new SPDataCallback() {
-                    @Override
-                    public void responseData(JSONObject message) {
-                        mMain.socketHandler("answer login", message);
-                    }
-                });
+                            try {
+                                String connector_url = "http://";
+                                connector_url += host;
+                                connector_url += ":";
+                                connector_url += Integer.toString(ip);
+                                connector_url += "/";
+                                mSocket = IO.socket(connector_url);
+                                mSocket.connect();
+
+                            } catch (URISyntaxException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+                }
+                else {
+                    mState = 2;
+                    mMain.getSPMessageHandler().requestAttempLogin(new SPDataCallback() {
+                        @Override
+                        public void responseData(JSONObject message) {
+                            mMain.socketHandler("answer login", message);
+                        }
+                    });
+                }
             }
         }
     };
