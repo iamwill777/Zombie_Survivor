@@ -13,7 +13,8 @@ import com.somoplay.zombie.scene.SPMiniMap;
 import com.somoplay.zombie.sprite.SPPlayer;
 import com.somoplay.zombie.sprite.SPSpriteManager;
 import com.somoplay.zombie.ui.SPJoyStick;
-import com.somoplay.zombie.web.SPMessageHandler;
+import com.somoplay.zombie.web.SPIRecvMessageHandler;
+import com.somoplay.zombie.web.SPSocketManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +24,7 @@ import org.json.JSONObject;
  * Created by yaolu on 2017-06-14.
  */
 
-public class SPGameScene implements Screen
+public class SPGameScene implements Screen, SPIRecvMessageHandler
 {
     private OrthographicCamera camera; //2D camera
 
@@ -33,16 +34,14 @@ public class SPGameScene implements Screen
     private SPMiniMap spMiniMap;
     private SpriteBatch spriteBatch;
 
-    private SPMessageHandler spMessageHandler;
-
+    private SPSocketManager mSocketManager;
     private SPMainListener spMainListener;
 
     public SPSpriteManager getSPSpriteManager(){
         return spSpriteManager;
     }
-
-    public SPMessageHandler getSPMessageHandler() {
-        return spMessageHandler;
+    public SPSocketManager getSPMessageHandler() {
+        return mSocketManager;
     }
 
     public void setSpMainListener(SPMainListener spMainListener) {
@@ -100,8 +99,8 @@ public class SPGameScene implements Screen
         spJoyStick = new SPJoyStick(spSpriteManager.getPlayer(), this.camera, this);
         spMiniMap = new SPMiniMap(spriteBatch, spSpriteManager);
 
-        spMessageHandler = new SPMessageHandler(this);
-        getSPMessageHandler().connect();
+        mSocketManager = new SPSocketManager(this);
+        getSPMessageHandler().connectToGate();
     }
 
     private void updateCamera() {
@@ -158,14 +157,14 @@ public class SPGameScene implements Screen
     @Override public void dispose() {
         spMap.dispose();
         spJoyStick.dispose();
-        spMessageHandler.disconnect();
+        mSocketManager.disconnect();
     }
 
-    public void socketHandler(String type, Object... args) {
+    @Override
+    public void socketHandler(String type, JSONObject message) {
         if (type == "answer login") {      // answer to add userlist
-            JSONObject data = (JSONObject) args[0];
             try {
-                JSONArray users = data.getJSONArray("users");
+                JSONArray users = message.getJSONArray("users");
                 if(users != null && users.length() > 0) {
                     for(int i=0; i<users.length(); i++) {
                         JSONObject objectInArray = users.getJSONObject(i);
@@ -175,7 +174,7 @@ public class SPGameScene implements Screen
                     }
                 }
 
-                JSONArray monsters = data.getJSONArray("monsters");
+                JSONArray monsters = message.getJSONArray("monsters");
                 if (monsters != null && monsters.length() > 0) {
                     for(int i=0; i<monsters.length(); i++) {
                         JSONObject objectInArray = monsters.getJSONObject(i);
@@ -187,18 +186,16 @@ public class SPGameScene implements Screen
             }
         }
         else if (type == "notify player shooing" ) {
-            JSONObject data = (JSONObject) args[0];
             try {
-                JSONObject body = data.getJSONObject("body");
+                JSONObject body = message.getJSONObject("body");
                 this.getSPSpriteManager().addBullets(body.getString("username"), (float)body.getDouble("X"), (float)body.getDouble("Y"), (float)body.getDouble("angle"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         else if (type == "notify monsters") {
-            JSONObject data = (JSONObject) args[0];
             try {
-                JSONObject body = data.getJSONObject("body");
+                JSONObject body = message.getJSONObject("body");
                 this.getSPSpriteManager().removeMonster(body.getInt("killedMonster"));
 
                 JSONArray monsters = body.getJSONArray("monsters");
@@ -213,18 +210,16 @@ public class SPGameScene implements Screen
             }
         }
         else if (type == "notify chase player") {
-            JSONObject data = (JSONObject) args[0];
             try {
-                JSONObject body = data.getJSONObject("body");
+                JSONObject body = message.getJSONObject("body");
                 this.getSPSpriteManager().chasePlayer(body.getInt("mobIndex"), (float)body.getDouble("posX"), (float)body.getDouble("posY"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         else if (type == "notify login") {      // notify to add new_user
-            JSONObject data = (JSONObject) args[0];
             try {
-                JSONObject newUser = data.getJSONObject("body");
+                JSONObject newUser = message.getJSONObject("body");
                 SPPlayer newPlayer = new SPPlayer(false, newUser.getString("user_name"), newUser.getDouble("posX"), newUser.getDouble("posY"));
                 this.getSPSpriteManager().addPlayers(newPlayer);
             } catch (JSONException e) {
@@ -232,11 +227,10 @@ public class SPGameScene implements Screen
             }
         }
         else if (type == "notify moving") {
-            JSONObject packet = (JSONObject) args[0];
             String username;
             float fX, fY, fAngle;
             try {
-                JSONObject data = packet.getJSONObject("body");
+                JSONObject data = message.getJSONObject("body");
                 username = data.getString("username");
                 fX = Float.valueOf(String.valueOf(data.getString("X")));
                 fY = Float.valueOf(String.valueOf(data.getString("Y")));
@@ -248,11 +242,10 @@ public class SPGameScene implements Screen
             }
         }
         else if (type == "notify user left") {
-            JSONObject packet = (JSONObject) args[0];
             String username;
             float fX, fY, fAngle;
             try {
-                JSONObject data = packet.getJSONObject("body");
+                JSONObject data = message.getJSONObject("body");
                 username = data.getString("user");
                 this.getSPSpriteManager().removePlayers(username);
             } catch (JSONException e) {
@@ -261,4 +254,21 @@ public class SPGameScene implements Screen
         }
     }
 
+    @Override
+    public void createStandaloneZombies(int num) {
+        if (getSPSpriteManager().getZombie().size() <= 0) {
+            getSPSpriteManager().createStandaloneZombies(num);
+        }
+    }
+
+    @Override
+    public void getRequestLoginInfo(JSONObject requestLogin) {
+        try {
+            requestLogin.put("username", getSPSpriteManager().getPlayer().getUserName());
+            requestLogin.put("X", getSPSpriteManager().getPlayer().getX());
+            requestLogin.put("Y", getSPSpriteManager().getPlayer().getY());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -8,9 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -25,7 +27,7 @@ public class SPSocketManager {
     private final static String JSONARRAY_FLAG = "[";
     protected Socket mSocket;
     private Boolean mIsConnected = false;
-    protected SPGameScene mMain;
+    private SPIRecvMessageHandler mRecvMessageHandler;
     private int mReqId;
     protected Map<Integer, SPDataCallback> mMapCbs;
     protected Map<String, List<SPDataListener>> mMapListeners;
@@ -35,20 +37,29 @@ public class SPSocketManager {
     //public static final String GATE_SERVER_URL = "http://10.51.205.75:3014/";
     //public static final String GATE_SERVER_URL = "http://192.168.0.103:3014/";
 
-    public static final String UserName = "Snow John";
-
-    public SPSocketManager(SPGameScene main) {
+    public SPSocketManager(SPIRecvMessageHandler recvMessage) {
 
         mMapCbs = new HashMap<Integer, SPDataCallback>();
         mMapListeners = new HashMap<String, List<SPDataListener>>();
+        mRecvMessageHandler = recvMessage;
 
-        mMain = main;
+        onLoginAnswer();
+        onNotifyLogin();
+        onUserLeaveFromRoom();
+        //onBroadcastingMessage();
+        onNotifyPlayerLocation();
+        onNotifyPlayerShooting();
+        onNotifyMonsters();
+        onChasePlayer();
     }
 
-    public void connect() {
-        try {
-            mSocket = IO.socket(GATE_SERVER_URL);
+    public void connectToGate() {
+        connect(GATE_SERVER_URL);
+    }
 
+    public void connect(String url) {
+        try {
+            mSocket = IO.socket(url);
             mSocket.on(Socket.EVENT_CONNECT, onConnect);
             mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
             mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
@@ -104,6 +115,26 @@ public class SPSocketManager {
         request(route, msg);
     }
 
+    private void reconnectToConnector(JSONObject message) {
+        String connector_url = "http://";
+        try {
+            String host = message.getString("host");
+            int port = message.getInt("port");
+            if (host.equals("127.0.0.1")) {
+                host = "10.0.2.2";
+            }
+            connector_url += host;
+            connector_url += ":";
+            connector_url += Integer.toString(port);
+            connector_url += "/";
+
+            disconnect();
+            connect(connector_url);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private JSONObject filter(JSONObject msg) {
         if (msg == null) {
             msg = new JSONObject();
@@ -117,46 +148,28 @@ public class SPSocketManager {
         return msg;
     }
 
-    // When Server is running again
+    // When Server is running
     private Emitter.Listener onConnect = new Emitter.Listener() {
 
         @Override
         public void call(Object... args) {
-            if (!mIsConnected) {
-                mIsConnected = true;
-                if (mState < 1) {       // get host and port from gate server
-                    mMain.getSPMessageHandler().requestConnectorInfo(new SPDataCallback() {
-                        @Override
-                        public void responseData(JSONObject message) {
-                            mState = 1;
-                            String host = "10.2.2.0"; //message.getString("host");
-                            int ip = 1023; //message.getInt("port");
-
-                            try {
-                                String connector_url = "http://";
-                                connector_url += host;
-                                connector_url += ":";
-                                connector_url += Integer.toString(ip);
-                                connector_url += "/";
-                                mSocket = IO.socket(connector_url);
-                                mSocket.connect();
-
-                            } catch (URISyntaxException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    });
-                }
-                else {
-                    mState = 2;
-                    mMain.getSPMessageHandler().requestAttempLogin(new SPDataCallback() {
-                        @Override
-                        public void responseData(JSONObject message) {
-                            mMain.socketHandler("answer login", message);
-                        }
-                    });
-                }
+            mIsConnected = true;
+            if (mState < 1) {
+                mState = 3;
+                requestConnectorInfo(new SPDataCallback() {
+                    @Override
+                    public void responseData(JSONObject message) {
+                        reconnectToConnector(message);
+                    }
+                });
+            } else {
+                mState = -1;
+                requestAttempLogin(new SPDataCallback() {
+                    @Override
+                    public void responseData(JSONObject message) {
+                        mRecvMessageHandler.socketHandler("answer login", message);
+                    }
+                });
             }
         }
     };
@@ -165,7 +178,7 @@ public class SPSocketManager {
         @Override
         public void call(Object... args) {
             mIsConnected = false;
-            Gdx.app.log("DEBUG", "pomeloclient is connected.");
+            Gdx.app.log("DEBUG", "Socket is disconnected.");
         }
     };
 
@@ -174,13 +187,9 @@ public class SPSocketManager {
         public void call(Object... args) {
             Gdx.app.log("DEBUG", "connection is terminated. : " + args.toString());
             mIsConnected = false;
-
-            if (mMain.getSPSpriteManager().getZombie().size() <= 0) {
-                mMain.getSPSpriteManager().createStandaloneZombies(5);
-            }
+            mRecvMessageHandler.createStandaloneZombies(5);
         }
     };
-
 
     private Emitter.Listener onMessage = new Emitter.Listener() {
         @Override
@@ -207,8 +216,12 @@ public class SPSocketManager {
                 if(cb != null)
                     cb.responseData(jsonObject.getJSONObject("body"));
                 else {
-                    if (!jsonObject.isNull("body") && !jsonObject.isNull("msg"))
-                        emit(jsonObject.getJSONObject("body").getString("msg"), jsonObject);
+                    if (!jsonObject.isNull("body")) {
+                        JSONObject body = jsonObject.getJSONObject("body");
+                        if (!body.isNull("code")) {
+                            emit(jsonObject.getJSONObject("body").getString("route"), jsonObject);
+                        }
+                    }
                 }
                 mMapCbs.remove(id);
             }
@@ -242,5 +255,145 @@ public class SPSocketManager {
             SPDataEvent event = new SPDataEvent(this, message);
             listener.receiveData(event);
         }
+    }
+
+    // receive messages from server
+    public void onLoginAnswer() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("answer login", event.getMessage());
+            }
+        });
+        mMapListeners.put("onLoginAnswer", lstListener);
+    }
+
+    public void onNotifyLogin() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify login", event.getMessage());
+            }
+        });
+        mMapListeners.put("onNotifyLogin", lstListener);
+    }
+
+    public void onUserLeaveFromRoom() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify user left", event.getMessage());
+            }
+        });
+        mMapListeners.put("onUserLeaveFromRoom", lstListener);
+    }
+
+    public void onNotifyPlayerLocation() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify moving", event.getMessage());
+            }
+        });
+        mMapListeners.put("onNotifyPlayerLocation", lstListener);
+    }
+
+    public void onNotifyMonsters() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify monsters", event.getMessage());
+            }
+        });
+        mMapListeners.put("onNotifyMonsters", lstListener);
+    }
+
+    public void onNotifyPlayerShooting() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify player shooing", event.getMessage());
+            }
+        });
+        mMapListeners.put("onNotifyPlayerShooting", lstListener);
+    }
+
+    public void onChasePlayer() {
+        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
+        lstListener.add(new SPDataListener() {
+            @Override
+            public void receiveData(SPDataEvent event) {
+                mRecvMessageHandler.socketHandler("notify chase player", event.getMessage());
+            }
+        });
+        mMapListeners.put("onChasePlayer", lstListener);
+    }
+
+    // request messages to server
+    public void requestConnectorInfo(SPDataCallback func) {
+        Random random = new Random();
+        JSONObject requestConnectorInfo = new JSONObject();
+        try {
+            requestConnectorInfo.put("uid", random.nextInt() % 1000000);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request("gate.gateHandler.queryEntry", requestConnectorInfo, func);
+    }
+
+    public void requestAttempLogin(SPDataCallback func) {
+
+        JSONObject requestLogin = new JSONObject();
+        try {
+            requestLogin.put("rid", 1);
+            mRecvMessageHandler.getRequestLoginInfo(requestLogin);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request("connector.entryHandler.entry", requestLogin, func);
+    }
+
+    public void notifyPlayerPosition(float fX, float fY, float angle) {
+        JSONObject ntfUserPosition = new JSONObject();
+        try {
+            ntfUserPosition.put("X", fX);
+            ntfUserPosition.put("Y", fY);
+            ntfUserPosition.put("angle", angle);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        notifyMessage("room.roomHandler.notifyPlayerLocation", ntfUserPosition);
+    }
+
+    public void notifyPlayerShooting(float fX, float fY, float angle) {
+        JSONObject ntfPlayerShooting = new JSONObject();
+        try {
+            ntfPlayerShooting.put("X", fX);
+            ntfPlayerShooting.put("Y", fY);
+            ntfPlayerShooting.put("angle", angle);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        notifyMessage("room.roomHandler.notifyPlayerShooting", ntfPlayerShooting);
+    }
+
+    public void requestKilledMonster(int monsterIndex, SPDataCallback func) {
+        JSONObject requestKilledMonster = new JSONObject();
+        try {
+            requestKilledMonster.put("idKilledMonster", monsterIndex);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        request("room.roomHandler.requestKilledMonster", requestKilledMonster, func);
+    }
+
+    public Boolean isConnected() {
+        return mIsConnected;
     }
 }
