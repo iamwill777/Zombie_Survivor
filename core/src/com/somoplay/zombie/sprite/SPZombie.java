@@ -91,7 +91,7 @@ public class SPZombie extends Sprite {
         }
 
 
-        if(canMove && !isConnected) {
+        if(canMove) {
             chasePlayer(player);
         }
 

@@ -135,8 +135,12 @@ public class SPPlayer extends Sprite {
             }
         }
 
-        for(SPBullet bullet: bulletArrayList) {
-            bullet.draw(spritebatch);
+        for(int i=0; i<bulletArrayList.size(); i++) {
+            if (!bulletArrayList.get(i).isAlive()) {
+                bulletArrayList.remove(i);
+            }
+            else
+                bulletArrayList.get(i).draw(spritebatch);
         }
 
         hpBar.setPosition(getX()+15,getY()+115);

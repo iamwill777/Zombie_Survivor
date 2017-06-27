@@ -43,14 +43,7 @@ public class SPSocketManager {
         mMapListeners = new HashMap<String, List<SPDataListener>>();
         mRecvMessageHandler = recvMessage;
 
-        onLoginAnswer();
-        onNotifyLogin();
-        onUserLeaveFromRoom();
-        //onBroadcastingMessage();
-        onNotifyPlayerLocation();
-        onNotifyPlayerShooting();
-        onNotifyMonsters();
-        onChasePlayer();
+        onMessage();
     }
 
     public void connectToGate() {
@@ -167,7 +160,7 @@ public class SPSocketManager {
                 requestAttempLogin(new SPDataCallback() {
                     @Override
                     public void responseData(JSONObject message) {
-                        mRecvMessageHandler.socketHandler("answer login", message);
+                        mRecvMessageHandler.socketHandler(message);
                     }
                 });
             }
@@ -227,7 +220,7 @@ public class SPSocketManager {
             }
             // broadcast message
             else
-                emit(jsonObject.getString("route"), jsonObject);
+                emit(jsonObject.getString("route"), jsonObject.getJSONObject("body"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -258,81 +251,15 @@ public class SPSocketManager {
     }
 
     // receive messages from server
-    public void onLoginAnswer() {
+    public void onMessage() {
         List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
         lstListener.add(new SPDataListener() {
             @Override
             public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("answer login", event.getMessage());
+                mRecvMessageHandler.socketHandler(event.getMessage());
             }
         });
-        mMapListeners.put("onLoginAnswer", lstListener);
-    }
-
-    public void onNotifyLogin() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify login", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyLogin", lstListener);
-    }
-
-    public void onUserLeaveFromRoom() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify user left", event.getMessage());
-            }
-        });
-        mMapListeners.put("onUserLeaveFromRoom", lstListener);
-    }
-
-    public void onNotifyPlayerLocation() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify moving", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyPlayerLocation", lstListener);
-    }
-
-    public void onNotifyMonsters() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify monsters", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyMonsters", lstListener);
-    }
-
-    public void onNotifyPlayerShooting() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify player shooing", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyPlayerShooting", lstListener);
-    }
-
-    public void onChasePlayer() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify chase player", event.getMessage());
-            }
-        });
-        mMapListeners.put("onChasePlayer", lstListener);
+        mMapListeners.put("onMessage", lstListener);
     }
 
     // request messages to server

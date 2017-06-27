@@ -37,6 +37,10 @@ public class SPBullet {
         mIsAlive = false;
     }
 
+    public boolean isAlive() {
+        return mIsAlive;
+    }
+
     public void draw(SpriteBatch batch) {
         batch.draw(SPAssetManager.getInstance().getBullet(), hitBox.x, hitBox.y, 50, 50);
     }

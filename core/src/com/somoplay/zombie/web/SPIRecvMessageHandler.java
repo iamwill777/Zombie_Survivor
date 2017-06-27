@@ -7,7 +7,7 @@ import org.json.JSONObject;
  */
 
 public interface SPIRecvMessageHandler {
-    void socketHandler(String type, JSONObject message);
+    void socketHandler(JSONObject message);
     void createStandaloneZombies(int num);
     void getRequestLoginInfo(JSONObject requestLogin);
 }

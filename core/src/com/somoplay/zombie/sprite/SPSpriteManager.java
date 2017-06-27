@@ -95,14 +95,22 @@ public class SPSpriteManager {
     }
 
     public void render(OrthographicCamera camera, SpriteBatch batch) {
-        for(SPZombie zombie: mlstZombie) {
-            zombie.draw(batch);
+        for(int i=0; i<mlstZombie.size(); i++) {
+            if (!mlstZombie.get(i).isAlive()) {
+                mlstZombie.remove(i);
+            }
+            else
+                mlstZombie.get(i).draw(batch);
         }
 
         mPlayer.draw(batch);
 
-        for(SPPlayer player: mlstPlayers) {
-            player.draw(batch);
+        for(int i=0; i<mlstPlayers.size(); i++) {
+            if (!mlstPlayers.get(i).isAlive()) {
+                mlstPlayers.remove(i);
+            }
+            else
+                mlstPlayers.get(i).draw(batch);
         }
     }
 
