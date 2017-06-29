@@ -286,38 +286,41 @@ public class SPSocketManager {
         request("connector.entryHandler.entry", requestLogin, func);
     }
 
-    public void notifyPlayerPosition(float fX, float fY, float angle) {
+    private void sendData(int msgNum, String username, JSONObject message) {
+
+        try {
+            message.put("code", 10004);
+            message.put("route", "onMessage");
+            message.put("msgNum", msgNum);
+            message.put("username", username);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        notifyMessage("room.roomHandler.notifyData", message);
+    }
+
+    public void notifyData(int msgNum, String username, float fX, float fY, float angle) {
         JSONObject ntfUserPosition = new JSONObject();
         try {
+            ntfUserPosition.put("username", username);
             ntfUserPosition.put("X", fX);
             ntfUserPosition.put("Y", fY);
             ntfUserPosition.put("angle", angle);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        notifyMessage("room.roomHandler.notifyPlayerLocation", ntfUserPosition);
+        sendData(msgNum, username, ntfUserPosition);
     }
 
-    public void notifyPlayerShooting(float fX, float fY, float angle) {
-        JSONObject ntfPlayerShooting = new JSONObject();
-        try {
-            ntfPlayerShooting.put("X", fX);
-            ntfPlayerShooting.put("Y", fY);
-            ntfPlayerShooting.put("angle", angle);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        notifyMessage("room.roomHandler.notifyPlayerShooting", ntfPlayerShooting);
-    }
-
-    public void requestKilledMonster(int monsterIndex, SPDataCallback func) {
+    public void requestKilledMonster(int msgNum, String username, int monsterIndex, SPDataCallback func) {
         JSONObject requestKilledMonster = new JSONObject();
         try {
             requestKilledMonster.put("idKilledMonster", monsterIndex);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        request("room.roomHandler.requestKilledMonster", requestKilledMonster, func);
+        sendData(msgNum, username, requestKilledMonster);
     }
 
     public Boolean isConnected() {

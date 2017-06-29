@@ -13,6 +13,7 @@ import com.somoplay.zombie.scene.SPMiniMap;
 import com.somoplay.zombie.sprite.SPPlayer;
 import com.somoplay.zombie.sprite.SPSpriteManager;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 import com.somoplay.zombie.web.SPIRecvMessageHandler;
 import com.somoplay.zombie.web.SPSocketManager;
 
@@ -166,7 +167,7 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
             int code = message.getInt("code");
 
             switch(code) {
-                case 10001: {
+                case CodeDefine.CODE_MSG_ANSWER_LOGIN: {
                     JSONArray users = message.getJSONArray("users");
                     if (users != null && users.length() > 0) {
                         for (int i = 0; i < users.length(); i++) {
@@ -185,44 +186,41 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
                     }
                     break;
                 }
-                case 10002: {
+                case CodeDefine.CODE_MSG_ADD_PLAYER: {
                     SPPlayer newPlayer = new SPPlayer(false, message.getString("user_name"), message.getDouble("posX"), message.getDouble("posY"));
                     this.getSPSpriteManager().addPlayers(newPlayer);
                     break;
                 }
-                case 10003: {
+                case CodeDefine.CODE_MSG_REMOVE_PLAYER: {
                     String username;
-                    JSONObject data = message.getJSONObject("body");
-                    username = data.getString("user");
+                    username = message.getString("user");
                     this.getSPSpriteManager().removePlayers(username);
                     break;
                 }
-                case 10004: {
-                    String username;
-                    float fX, fY, fAngle;
-                    username = message.getString("username");
-                    fX = Float.valueOf(String.valueOf(message.getString("X")));
-                    fY = Float.valueOf(String.valueOf(message.getString("Y")));
-                    fAngle = Float.valueOf(String.valueOf(message.getString("angle")));
-                    this.getSPSpriteManager().setPlayerPosition(username, fX, fY, fAngle);
-                    break;
-                }
-                case 10005: {
-                    //this.getSPSpriteManager().addBullets(message.getString("username"), (float)message.getDouble("X"), (float)message.getDouble("Y"), (float)message.getDouble("angle"));
-                    break;
-                }
-                case 10006: {
-                    //JSONObject body = message.getJSONObject("body");
-                    this.getSPSpriteManager().removeMonster(message.getInt("killedMonster"));
+                case CodeDefine.CODE_MSG: {
+                    int msgNum = message.getInt("msgNum");
+                    switch(msgNum) {
+                        case CodeDefine.MSG_PLAYER_MOVING:
+                            this.getSPSpriteManager().setPlayerPosition(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("angle"));
+                            break;
 
-                    JSONArray monsters = message.getJSONArray("monsters");
-                    if (monsters != null && monsters.length() > 0) {
-                        for (int i = 0; i < monsters.length(); i++) {
-                            JSONObject objectInArray = monsters.getJSONObject(i);
-                            this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+                        case CodeDefine.MSG_PLAYER_SHOOTING:
+                            this.getSPSpriteManager().addBullets(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("angle"));
+                            break;
+
+                        case CodeDefine.MSG_KILLED_MONSTER: {
+                            this.getSPSpriteManager().removeMonster(message.getInt("idKilledMonster"));
+
+//                            JSONArray monsters = message.getJSONArray("monsters");
+//                            if (monsters != null && monsters.length() > 0) {
+//                                for (int i = 0; i < monsters.length(); i++) {
+//                                    JSONObject objectInArray = monsters.getJSONObject(i);
+//                                    this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+//                                }
+//                            }
+                            break;
                         }
                     }
-                    break;
                 }
             }
 

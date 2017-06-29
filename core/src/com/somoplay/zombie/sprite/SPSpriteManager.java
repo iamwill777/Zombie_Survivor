@@ -7,6 +7,7 @@ import com.somoplay.zombie.main.SPGameScene;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.scene.SPMapConstant;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 import com.somoplay.zombie.web.SPDataCallback;
 
 import org.json.JSONObject;
@@ -164,11 +165,7 @@ public class SPSpriteManager {
         int monsterIndex = mPlayer.updateBullets(mlstZombie);
         if (monsterIndex >= 0) {
             removeMonster(monsterIndex);
-            mMain.getSPMessageHandler().requestKilledMonster(monsterIndex, new SPDataCallback() {
-                @Override
-                public void responseData(JSONObject message) {
-                }
-            });
+            mMain.getSPMessageHandler().requestKilledMonster(CodeDefine.MSG_KILLED_MONSTER, mPlayer.getUserName(), monsterIndex, null);
         }
 
         for(SPPlayer player: mlstPlayers) {

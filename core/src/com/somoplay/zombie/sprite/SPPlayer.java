@@ -3,6 +3,7 @@ package com.somoplay.zombie.sprite;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -56,6 +57,9 @@ public class SPPlayer extends Sprite {
     private Sprite hpBar;
     private Sprite hpBarBorder;
 
+    // draw player position
+    BitmapFont mLBPlayerLocation;// = new BitmapFont();
+
     public SPPlayer(boolean isMainPlayer, String username, double posX, double posY) {
         mIsMainPlayer = isMainPlayer;
         mUserName = username;
@@ -76,6 +80,7 @@ public class SPPlayer extends Sprite {
 
         hpBarTexture = SPAssetManager.getInstance().getHealthBar();
         hpBarBoarderTexture = SPAssetManager.getInstance().getHealthBarBorder();
+        mLBPlayerLocation = SPAssetManager.getInstance().getBitmapFont();
         hpBar = new Sprite(hpBarTexture,400,50);
         hpBarBorder = new Sprite(hpBarBoarderTexture);
 
@@ -149,6 +154,8 @@ public class SPPlayer extends Sprite {
 
         hpBar.draw(spritebatch);
         hpBarBorder.draw(spritebatch);
+
+        mLBPlayerLocation.draw(spritebatch, "X: " + Float.toString(getX()) + ", Y: " + Float.toString(getY()), getX(), getY());
     }
 
     public int updateBullets(ArrayList<SPZombie> lstZombie) {

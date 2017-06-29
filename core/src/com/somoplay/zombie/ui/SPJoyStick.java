@@ -15,6 +15,7 @@ import com.somoplay.zombie.main.SPGameScene;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.scene.SPMapConstant;
 import com.somoplay.zombie.sprite.SPPlayer;
+import com.somoplay.zombie.web.CodeDefine;
 
 /**
  * Created by yaolu on 2017-06-15.
@@ -132,7 +133,7 @@ public class SPJoyStick {
                         player.changeDirection(v.angle());
 
                         // send to message
-                        mGameScreen.getSPMessageHandler().notifyPlayerShooting(player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
+                        mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_SHOOTING, player.getUserName(), player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
                     }
                 }, 0.0f, 0.2f);
             }
@@ -184,6 +185,6 @@ public class SPJoyStick {
         }
 
         if (tpDirection.isTouched())
-            mGameScreen.getSPMessageHandler().notifyPlayerPosition(tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), 0);
+            mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_MOVING, player.getUserName(), tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), 0);
     }
 }
