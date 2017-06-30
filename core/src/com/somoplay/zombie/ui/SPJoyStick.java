@@ -133,7 +133,7 @@ public class SPJoyStick {
                         player.changeDirection(v.angle());
 
                         // send to message
-                        mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_SHOOTING, player.getUserName(), player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
+                        mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_SHOOTING, player.getUserName(), player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, 0, 0, v.angle());
                     }
                 }, 0.0f, 0.2f);
             }
@@ -185,6 +185,6 @@ public class SPJoyStick {
         }
 
         if (tpDirection.isTouched())
-            mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_MOVING, player.getUserName(), tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), 0);
+            mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_MOVING, player.getUserName(), tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), player.getX(), player.getY(), 0);
     }
 }
