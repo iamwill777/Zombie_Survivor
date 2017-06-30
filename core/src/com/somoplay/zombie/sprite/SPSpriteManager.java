@@ -119,11 +119,11 @@ public class SPSpriteManager {
         return mPlayer;
     }
 
-    public void setPlayerPosition(String username, float X, float Y, float angle) {
+    public void setPlayerPosition(String username, float X, float Y, float posX, float posY, float angle) {
 
         for(SPPlayer player: mlstPlayers) {
             if (player.getUserName().equals(username)) {
-                player.addMovingPosition(X, Y, angle);
+                player.addMovingPosition(X, Y, posX, posY, angle);
                 break;
             }
         }

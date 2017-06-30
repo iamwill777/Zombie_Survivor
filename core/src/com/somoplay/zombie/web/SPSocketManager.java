@@ -300,12 +300,14 @@ public class SPSocketManager {
         notifyMessage("room.roomHandler.notifyData", message);
     }
 
-    public void notifyData(int msgNum, String username, float fX, float fY, float angle) {
+    public void notifyData(int msgNum, String username, float fX, float fY, float posX, float posY, float angle) {
         JSONObject ntfUserPosition = new JSONObject();
         try {
             ntfUserPosition.put("username", username);
             ntfUserPosition.put("X", fX);
             ntfUserPosition.put("Y", fY);
+            ntfUserPosition.put("posX", posX);
+            ntfUserPosition.put("posY", posY);
             ntfUserPosition.put("angle", angle);
         } catch (JSONException e) {
             e.printStackTrace();

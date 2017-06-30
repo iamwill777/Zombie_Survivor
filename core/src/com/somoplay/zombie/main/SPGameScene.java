@@ -201,7 +201,7 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
                     int msgNum = message.getInt("msgNum");
                     switch(msgNum) {
                         case CodeDefine.MSG_PLAYER_MOVING:
-                            this.getSPSpriteManager().setPlayerPosition(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("angle"));
+                            this.getSPSpriteManager().setPlayerPosition(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("posX"), (float) message.getDouble("posY"), (float) message.getDouble("angle"));
                             break;
 
                         case CodeDefine.MSG_PLAYER_SHOOTING:

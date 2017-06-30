@@ -24,11 +24,15 @@ public class SPPlayer extends Sprite {
     public class MovingPosition {
         public float fX;
         public float fY;
+        public float fPosX;
+        public float fPosY;
         public float fAngle;
 
-        MovingPosition(float x, float y, float angle) {
+        MovingPosition(float x, float y, float posX, float posY, float angle) {
             fX = x;
             fY = y;
+            fPosX = posX;
+            fPosY = posY;
             fAngle = angle;
         }
     }
@@ -88,9 +92,9 @@ public class SPPlayer extends Sprite {
         hpBarBorder.setScale(0.2f,0.2f);
     }
 
-    public void addMovingPosition(float X, float Y, float angle) {
+    public void addMovingPosition(float X, float Y, float posX, float posY, float angle) {
         if (movingPositionArrayList.size() <= 0) {
-            movingPositionArrayList.add(new MovingPosition(X, Y, angle));
+            movingPositionArrayList.add(new MovingPosition(X, Y, posX, posY, angle));
         }
     }
 
@@ -136,7 +140,8 @@ public class SPPlayer extends Sprite {
                     changeDirection(v.angle());
                     movingPositionArrayList.remove(0);
                 }
-                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());
+                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());        // for amount of joystick
+                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());        // for real position
             }
         }
 
