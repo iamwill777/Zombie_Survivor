@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.somoplay.zombie.asset.SPAssetManager;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 
 import java.util.ArrayList;
 
@@ -132,16 +133,21 @@ public class SPPlayer extends Sprite {
             }
             else {
                 mTimePassed += Gdx.graphics.getDeltaTime();
+                MovingPosition data = null;
                 if (movingPositionArrayList.size() > 0) {
-                    MovingPosition data = movingPositionArrayList.get(0);
-                    setX(getX() + data.fX* SPJoyStick.blockSpeed);
-                    setY(getY() + data.fY*SPJoyStick.blockSpeed);
+                    data = movingPositionArrayList.get(0);
+                    checkBounds(data.fX * SPJoyStick.blockSpeed, data.fY * SPJoyStick.blockSpeed);
+//                    setX(getX() + data.fX * SPJoyStick.blockSpeed);
+//                    setY(getY() + data.fY * SPJoyStick.blockSpeed);
                     Vector2 v = new Vector2(data.fX, data.fY);
                     changeDirection(v.angle());
                     movingPositionArrayList.remove(0);
                 }
                 spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());        // for amount of joystick
-                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());        // for real position
+                if (data != null) {
+                    setX(data.fPosX);
+                    setY(data.fPosY);
+                }
             }
         }
 
@@ -248,4 +254,29 @@ public class SPPlayer extends Sprite {
     }
     public void setDead() { isAlive = false; }
     public boolean isAlive() { return isAlive; }
+
+    public void checkBounds(float knobX, float knobY) {
+
+        float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) SPMap.width*15-getWidth(), topRightY = (float) SPMap.height*15-getHeight();
+
+        if (getX() <= bottomLeftX || getX() >= topRightX) {
+            setX(getX());
+        }
+        else {
+            float positionX = getX() + knobX;//tpDirection.getKnobPercentX()*blockSpeed;
+            if (positionX >= 0 && positionX <= topRightX) {
+                setX(positionX);
+            }
+        }
+
+        if (getY() <= bottomLeftY || getY()+90 >= topRightY) {
+            setY(getY());
+        }
+        else {
+            float positionY = getY() + knobY;//tpDirection.getKnobPercentY()*blockSpeed;
+            if (positionY >= 0 && positionY +90 <= topRightY) {
+                setY(positionY);
+            }
+        }
+    }
 }
