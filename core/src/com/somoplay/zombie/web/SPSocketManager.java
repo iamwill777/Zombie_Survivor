@@ -43,14 +43,7 @@ public class SPSocketManager {
         mMapListeners = new HashMap<String, List<SPDataListener>>();
         mRecvMessageHandler = recvMessage;
 
-        onLoginAnswer();
-        onNotifyLogin();
-        onUserLeaveFromRoom();
-        //onBroadcastingMessage();
-        onNotifyPlayerLocation();
-        onNotifyPlayerShooting();
-        onNotifyMonsters();
-        onChasePlayer();
+        onMessage();
     }
 
     public void connectToGate() {
@@ -167,7 +160,7 @@ public class SPSocketManager {
                 requestAttempLogin(new SPDataCallback() {
                     @Override
                     public void responseData(JSONObject message) {
-                        mRecvMessageHandler.socketHandler("answer login", message);
+                        mRecvMessageHandler.socketHandler(message);
                     }
                 });
             }
@@ -227,7 +220,7 @@ public class SPSocketManager {
             }
             // broadcast message
             else
-                emit(jsonObject.getString("route"), jsonObject);
+                emit(jsonObject.getString("route"), jsonObject.getJSONObject("body"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -258,81 +251,15 @@ public class SPSocketManager {
     }
 
     // receive messages from server
-    public void onLoginAnswer() {
+    public void onMessage() {
         List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
         lstListener.add(new SPDataListener() {
             @Override
             public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("answer login", event.getMessage());
+                mRecvMessageHandler.socketHandler(event.getMessage());
             }
         });
-        mMapListeners.put("onLoginAnswer", lstListener);
-    }
-
-    public void onNotifyLogin() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify login", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyLogin", lstListener);
-    }
-
-    public void onUserLeaveFromRoom() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify user left", event.getMessage());
-            }
-        });
-        mMapListeners.put("onUserLeaveFromRoom", lstListener);
-    }
-
-    public void onNotifyPlayerLocation() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify moving", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyPlayerLocation", lstListener);
-    }
-
-    public void onNotifyMonsters() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify monsters", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyMonsters", lstListener);
-    }
-
-    public void onNotifyPlayerShooting() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify player shooing", event.getMessage());
-            }
-        });
-        mMapListeners.put("onNotifyPlayerShooting", lstListener);
-    }
-
-    public void onChasePlayer() {
-        List<SPDataListener> lstListener = new ArrayList<SPDataListener>();
-        lstListener.add(new SPDataListener() {
-            @Override
-            public void receiveData(SPDataEvent event) {
-                mRecvMessageHandler.socketHandler("notify chase player", event.getMessage());
-            }
-        });
-        mMapListeners.put("onChasePlayer", lstListener);
+        mMapListeners.put("onMessage", lstListener);
     }
 
     // request messages to server
@@ -359,38 +286,43 @@ public class SPSocketManager {
         request("connector.entryHandler.entry", requestLogin, func);
     }
 
-    public void notifyPlayerPosition(float fX, float fY, float angle) {
+    private void sendData(int msgNum, String username, JSONObject message) {
+
+        try {
+            message.put("code", CodeDefine.CODE_MSG);
+            message.put("route", "onMessage");
+            message.put("msgNum", msgNum);
+            message.put("username", username);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        notifyMessage("room.roomHandler.notifyData", message);
+    }
+
+    public void notifyData(int msgNum, String username, float fX, float fY, float posX, float posY, float angle) {
         JSONObject ntfUserPosition = new JSONObject();
         try {
+            ntfUserPosition.put("username", username);
             ntfUserPosition.put("X", fX);
             ntfUserPosition.put("Y", fY);
+            ntfUserPosition.put("posX", posX);
+            ntfUserPosition.put("posY", posY);
             ntfUserPosition.put("angle", angle);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        notifyMessage("room.roomHandler.notifyPlayerLocation", ntfUserPosition);
+        sendData(msgNum, username, ntfUserPosition);
     }
 
-    public void notifyPlayerShooting(float fX, float fY, float angle) {
-        JSONObject ntfPlayerShooting = new JSONObject();
-        try {
-            ntfPlayerShooting.put("X", fX);
-            ntfPlayerShooting.put("Y", fY);
-            ntfPlayerShooting.put("angle", angle);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        notifyMessage("room.roomHandler.notifyPlayerShooting", ntfPlayerShooting);
-    }
-
-    public void requestKilledMonster(int monsterIndex, SPDataCallback func) {
+    public void requestKilledMonster(int msgNum, String username, int monsterIndex, SPDataCallback func) {
         JSONObject requestKilledMonster = new JSONObject();
         try {
             requestKilledMonster.put("idKilledMonster", monsterIndex);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        request("room.roomHandler.requestKilledMonster", requestKilledMonster, func);
+        sendData(msgNum, username, requestKilledMonster);
     }
 
     public Boolean isConnected() {

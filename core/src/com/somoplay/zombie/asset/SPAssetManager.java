@@ -3,6 +3,7 @@ package com.somoplay.zombie.asset;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -53,6 +54,9 @@ public class SPAssetManager {
     private String mZombieSheetName = "Zombie/enemyAttack.png";
     private Animation mZombieRight, mZombieAttack;
 
+    // bitmap
+    private BitmapFont mBitmapFont;
+
     public void Init() {
         mAssetManager.load("resources/zombie.png", Texture.class);
         mAssetManager.load("resources/bullet.png", Texture.class);
@@ -69,6 +73,8 @@ public class SPAssetManager {
         mAssetManager.load(mZombieSheetName,Texture.class);
 
         frames = new Array<TextureRegion>();
+
+        mBitmapFont = new BitmapFont();
     }
 
     public void makeResource() {
@@ -186,6 +192,7 @@ public class SPAssetManager {
     public Texture getHealthBarBorder() { return mHealthBarBorder; }
     public Texture getMap() { return mMap; }
     public Texture getMiniPlayer(){ return mMiniPlayer; }
+    public BitmapFont getBitmapFont() { return mBitmapFont; }
 
     public boolean isbIsLoaded() {
         return bIsLoaded;

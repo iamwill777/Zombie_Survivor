@@ -3,6 +3,7 @@ package com.somoplay.zombie.sprite;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.somoplay.zombie.asset.SPAssetManager;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 
 import java.util.ArrayList;
 
@@ -23,11 +25,15 @@ public class SPPlayer extends Sprite {
     public class MovingPosition {
         public float fX;
         public float fY;
+        public float fPosX;
+        public float fPosY;
         public float fAngle;
 
-        MovingPosition(float x, float y, float angle) {
+        MovingPosition(float x, float y, float posX, float posY, float angle) {
             fX = x;
             fY = y;
+            fPosX = posX;
+            fPosY = posY;
             fAngle = angle;
         }
     }
@@ -56,6 +62,9 @@ public class SPPlayer extends Sprite {
     private Sprite hpBar;
     private Sprite hpBarBorder;
 
+    // draw player position
+    BitmapFont mLBPlayerLocation;// = new BitmapFont();
+
     public SPPlayer(boolean isMainPlayer, String username, double posX, double posY) {
         mIsMainPlayer = isMainPlayer;
         mUserName = username;
@@ -76,6 +85,7 @@ public class SPPlayer extends Sprite {
 
         hpBarTexture = SPAssetManager.getInstance().getHealthBar();
         hpBarBoarderTexture = SPAssetManager.getInstance().getHealthBarBorder();
+        mLBPlayerLocation = SPAssetManager.getInstance().getBitmapFont();
         hpBar = new Sprite(hpBarTexture,400,50);
         hpBarBorder = new Sprite(hpBarBoarderTexture);
 
@@ -83,9 +93,9 @@ public class SPPlayer extends Sprite {
         hpBarBorder.setScale(0.2f,0.2f);
     }
 
-    public void addMovingPosition(float X, float Y, float angle) {
+    public void addMovingPosition(float X, float Y, float posX, float posY, float angle) {
         if (movingPositionArrayList.size() <= 0) {
-            movingPositionArrayList.add(new MovingPosition(X, Y, angle));
+            movingPositionArrayList.add(new MovingPosition(X, Y, posX, posY, angle));
         }
     }
 
@@ -123,20 +133,30 @@ public class SPPlayer extends Sprite {
             }
             else {
                 mTimePassed += Gdx.graphics.getDeltaTime();
+                MovingPosition data = null;
                 if (movingPositionArrayList.size() > 0) {
-                    MovingPosition data = movingPositionArrayList.get(0);
-                    setX(getX() + data.fX* SPJoyStick.blockSpeed);
-                    setY(getY() + data.fY*SPJoyStick.blockSpeed);
+                    data = movingPositionArrayList.get(0);
+                    checkBounds(data.fX * SPJoyStick.blockSpeed, data.fY * SPJoyStick.blockSpeed);
+//                    setX(getX() + data.fX * SPJoyStick.blockSpeed);
+//                    setY(getY() + data.fY * SPJoyStick.blockSpeed);
                     Vector2 v = new Vector2(data.fX, data.fY);
                     changeDirection(v.angle());
                     movingPositionArrayList.remove(0);
                 }
-                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());
+                spritebatch.draw((TextureRegion) mAnimation.getKeyFrame(mTimePassed, true), getX(), getY());        // for amount of joystick
+                if (data != null) {
+                    setX(data.fPosX);
+                    setY(data.fPosY);
+                }
             }
         }
 
-        for(SPBullet bullet: bulletArrayList) {
-            bullet.draw(spritebatch);
+        for(int i=0; i<bulletArrayList.size(); i++) {
+            if (!bulletArrayList.get(i).isAlive()) {
+                bulletArrayList.remove(i);
+            }
+            else
+                bulletArrayList.get(i).draw(spritebatch);
         }
 
         hpBar.setPosition(getX()+15,getY()+115);
@@ -145,6 +165,8 @@ public class SPPlayer extends Sprite {
 
         hpBar.draw(spritebatch);
         hpBarBorder.draw(spritebatch);
+
+        mLBPlayerLocation.draw(spritebatch, "X: " + Float.toString(getX()) + ", Y: " + Float.toString(getY()), getX(), getY());
     }
 
     public int updateBullets(ArrayList<SPZombie> lstZombie) {
@@ -232,4 +254,29 @@ public class SPPlayer extends Sprite {
     }
     public void setDead() { isAlive = false; }
     public boolean isAlive() { return isAlive; }
+
+    public void checkBounds(float knobX, float knobY) {
+
+        float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) SPMap.width*15-getWidth(), topRightY = (float) SPMap.height*15-getHeight();
+
+        if (getX() <= bottomLeftX || getX() >= topRightX) {
+            setX(getX());
+        }
+        else {
+            float positionX = getX() + knobX;//tpDirection.getKnobPercentX()*blockSpeed;
+            if (positionX >= 0 && positionX <= topRightX) {
+                setX(positionX);
+            }
+        }
+
+        if (getY() <= bottomLeftY || getY()+90 >= topRightY) {
+            setY(getY());
+        }
+        else {
+            float positionY = getY() + knobY;//tpDirection.getKnobPercentY()*blockSpeed;
+            if (positionY >= 0 && positionY +90 <= topRightY) {
+                setY(positionY);
+            }
+        }
+    }
 }

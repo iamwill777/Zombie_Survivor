@@ -13,6 +13,7 @@ import com.somoplay.zombie.scene.SPMiniMap;
 import com.somoplay.zombie.sprite.SPPlayer;
 import com.somoplay.zombie.sprite.SPSpriteManager;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 import com.somoplay.zombie.web.SPIRecvMessageHandler;
 import com.somoplay.zombie.web.SPSocketManager;
 
@@ -157,100 +158,74 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
     @Override public void dispose() {
         spMap.dispose();
         spJoyStick.dispose();
-        mSocketManager.disconnect();
+        //mSocketManager.disconnect();
     }
 
     @Override
-    public void socketHandler(String type, JSONObject message) {
-        if (type == "answer login") {      // answer to add userlist
-            try {
-                JSONArray users = message.getJSONArray("users");
-                if(users != null && users.length() > 0) {
-                    for(int i=0; i<users.length(); i++) {
-                        JSONObject objectInArray = users.getJSONObject(i);
-                        //Gdx.app.log("SOCKET.IO", "username: " + objectInArray.getString("user_name"));
-                        SPPlayer newPlayer = new SPPlayer(false, objectInArray.getString("user_name"), objectInArray.getDouble("posX"), objectInArray.getDouble("posY"));
-                        this.getSPSpriteManager().addPlayers(newPlayer);
-                    }
-                }
+    public void socketHandler(JSONObject message) {
+        try {
+            int code = message.getInt("code");
 
-                JSONArray monsters = message.getJSONArray("monsters");
-                if (monsters != null && monsters.length() > 0) {
-                    for(int i=0; i<monsters.length(); i++) {
-                        JSONObject objectInArray = monsters.getJSONObject(i);
-                        this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float)objectInArray.getDouble("posX"), (float)objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+            switch(code) {
+                case CodeDefine.CODE_MSG_ANSWER_LOGIN: {
+                    JSONArray users = message.getJSONArray("users");
+                    if (users != null && users.length() > 0) {
+                        for (int i = 0; i < users.length(); i++) {
+                            JSONObject objectInArray = users.getJSONObject(i);
+                            SPPlayer newPlayer = new SPPlayer(false, objectInArray.getString("user_name"), objectInArray.getDouble("posX"), objectInArray.getDouble("posY"));
+                            this.getSPSpriteManager().addPlayers(newPlayer);
+                        }
                     }
-                }
-            } catch (JSONException e) {
-                return;
-            }
-        }
-        else if (type == "notify player shooing" ) {
-            try {
-                JSONObject body = message.getJSONObject("body");
-                this.getSPSpriteManager().addBullets(body.getString("username"), (float)body.getDouble("X"), (float)body.getDouble("Y"), (float)body.getDouble("angle"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        else if (type == "notify monsters") {
-            try {
-                JSONObject body = message.getJSONObject("body");
-                this.getSPSpriteManager().removeMonster(body.getInt("killedMonster"));
 
-                JSONArray monsters = body.getJSONArray("monsters");
-                if (monsters != null && monsters.length() > 0) {
-                    for(int i=0; i<monsters.length(); i++) {
-                        JSONObject objectInArray = monsters.getJSONObject(i);
-                        this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float)objectInArray.getDouble("posX"), (float)objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+                    JSONArray monsters = message.getJSONArray("monsters");
+                    if (monsters != null && monsters.length() > 0) {
+                        for (int i = 0; i < monsters.length(); i++) {
+                            JSONObject objectInArray = monsters.getJSONObject(i);
+                            this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+                        }
+                    }
+                    break;
+                }
+                case CodeDefine.CODE_MSG_ADD_PLAYER: {
+                    SPPlayer newPlayer = new SPPlayer(false, message.getString("user_name"), message.getDouble("posX"), message.getDouble("posY"));
+                    this.getSPSpriteManager().addPlayers(newPlayer);
+                    break;
+                }
+                case CodeDefine.CODE_MSG_REMOVE_PLAYER: {
+                    String username;
+                    username = message.getString("user");
+                    this.getSPSpriteManager().removePlayers(username);
+                    break;
+                }
+                case CodeDefine.CODE_MSG: {
+                    int msgNum = message.getInt("msgNum");
+                    switch(msgNum) {
+                        case CodeDefine.MSG_PLAYER_MOVING:
+                            this.getSPSpriteManager().setPlayerPosition(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("posX"), (float) message.getDouble("posY"), (float) message.getDouble("angle"));
+                            break;
+
+                        case CodeDefine.MSG_PLAYER_SHOOTING:
+                            this.getSPSpriteManager().addBullets(message.getString("username"), (float) message.getDouble("X"), (float) message.getDouble("Y"), (float) message.getDouble("angle"));
+                            break;
+
+                        case CodeDefine.MSG_KILLED_MONSTER: {
+                            this.getSPSpriteManager().removeMonster(message.getInt("idKilledMonster"));
+
+//                            JSONArray monsters = message.getJSONArray("monsters");
+//                            if (monsters != null && monsters.length() > 0) {
+//                                for (int i = 0; i < monsters.length(); i++) {
+//                                    JSONObject objectInArray = monsters.getJSONObject(i);
+//                                    this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"));
+//                                }
+//                            }
+                            break;
+                        }
                     }
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-        }
-        else if (type == "notify chase player") {
-            try {
-                JSONObject body = message.getJSONObject("body");
-                this.getSPSpriteManager().chasePlayer(body.getInt("mobIndex"), (float)body.getDouble("posX"), (float)body.getDouble("posY"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        else if (type == "notify login") {      // notify to add new_user
-            try {
-                JSONObject newUser = message.getJSONObject("body");
-                SPPlayer newPlayer = new SPPlayer(false, newUser.getString("user_name"), newUser.getDouble("posX"), newUser.getDouble("posY"));
-                this.getSPSpriteManager().addPlayers(newPlayer);
-            } catch (JSONException e) {
-                return;
-            }
-        }
-        else if (type == "notify moving") {
-            String username;
-            float fX, fY, fAngle;
-            try {
-                JSONObject data = message.getJSONObject("body");
-                username = data.getString("username");
-                fX = Float.valueOf(String.valueOf(data.getString("X")));
-                fY = Float.valueOf(String.valueOf(data.getString("Y")));
-                fAngle = Float.valueOf(String.valueOf(data.getString("angle")));
-                //Gdx.app.log("SOCKET.IO", "name: " + username + ", position X: " + fX + ", position Y: " + fY + ", angle: " + fAngle);
-                this.getSPSpriteManager().setPlayerPosition(username, fX, fY, fAngle);
-            } catch (JSONException e) {
-                return;
-            }
-        }
-        else if (type == "notify user left") {
-            String username;
-            float fX, fY, fAngle;
-            try {
-                JSONObject data = message.getJSONObject("body");
-                username = data.getString("user");
-                this.getSPSpriteManager().removePlayers(username);
-            } catch (JSONException e) {
-                return;
-            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 

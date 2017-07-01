@@ -7,6 +7,7 @@ import com.somoplay.zombie.main.SPGameScene;
 import com.somoplay.zombie.scene.SPMap;
 import com.somoplay.zombie.scene.SPMapConstant;
 import com.somoplay.zombie.ui.SPJoyStick;
+import com.somoplay.zombie.web.CodeDefine;
 import com.somoplay.zombie.web.SPDataCallback;
 
 import org.json.JSONObject;
@@ -95,14 +96,22 @@ public class SPSpriteManager {
     }
 
     public void render(OrthographicCamera camera, SpriteBatch batch) {
-        for(SPZombie zombie: mlstZombie) {
-            zombie.draw(batch);
+        for(int i=0; i<mlstZombie.size(); i++) {
+            if (!mlstZombie.get(i).isAlive()) {
+                mlstZombie.remove(i);
+            }
+            else
+                mlstZombie.get(i).draw(batch);
         }
 
         mPlayer.draw(batch);
 
-        for(SPPlayer player: mlstPlayers) {
-            player.draw(batch);
+        for(int i=0; i<mlstPlayers.size(); i++) {
+            if (!mlstPlayers.get(i).isAlive()) {
+                mlstPlayers.remove(i);
+            }
+            else
+                mlstPlayers.get(i).draw(batch);
         }
     }
 
@@ -110,11 +119,11 @@ public class SPSpriteManager {
         return mPlayer;
     }
 
-    public void setPlayerPosition(String username, float X, float Y, float angle) {
+    public void setPlayerPosition(String username, float X, float Y, float posX, float posY, float angle) {
 
         for(SPPlayer player: mlstPlayers) {
             if (player.getUserName().equals(username)) {
-                player.addMovingPosition(X, Y, angle);
+                player.addMovingPosition(X, Y, posX, posY, angle);
                 break;
             }
         }
@@ -156,11 +165,7 @@ public class SPSpriteManager {
         int monsterIndex = mPlayer.updateBullets(mlstZombie);
         if (monsterIndex >= 0) {
             removeMonster(monsterIndex);
-            mMain.getSPMessageHandler().requestKilledMonster(monsterIndex, new SPDataCallback() {
-                @Override
-                public void responseData(JSONObject message) {
-                }
-            });
+            mMain.getSPMessageHandler().requestKilledMonster(CodeDefine.MSG_KILLED_MONSTER, mPlayer.getUserName(), monsterIndex, null);
         }
 
         for(SPPlayer player: mlstPlayers) {
