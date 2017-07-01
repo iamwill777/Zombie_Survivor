@@ -158,7 +158,7 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
     @Override public void dispose() {
         spMap.dispose();
         spJoyStick.dispose();
-        mSocketManager.disconnect();
+        //mSocketManager.disconnect();
     }
 
     @Override

@@ -289,7 +289,7 @@ public class SPSocketManager {
     private void sendData(int msgNum, String username, JSONObject message) {
 
         try {
-            message.put("code", 10004);
+            message.put("code", CodeDefine.CODE_MSG);
             message.put("route", "onMessage");
             message.put("msgNum", msgNum);
             message.put("username", username);

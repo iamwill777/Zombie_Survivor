@@ -36,7 +36,7 @@ public class SPJoyStick {
     private Drawable touchShootingKnob;
 
     public static float blockSpeed = 5.0f;
-    private SPPlayer player;
+    private SPPlayer mPlayer;
     private SpriteBatch spriteBatch;
     private OrthographicCamera camera; //2D camera
     InputMultiplexer multiplexer = new InputMultiplexer();
@@ -47,7 +47,7 @@ public class SPJoyStick {
 
 
     public SPJoyStick(SPPlayer heroSprite, OrthographicCamera camera, SPGameScene gameScreen) {
-        this.player = heroSprite;
+        this.mPlayer = heroSprite;
         create(camera);
         mGameScreen = gameScreen;
     }
@@ -101,7 +101,7 @@ public class SPJoyStick {
         //connect to hero sprite
         //Set position to centre of the screen
         //player.setPosition(Gdx.graphics.getWidth()/2-player.getWidth()/2, Gdx.graphics.getHeight()/2-player.getHeight()/2);
-        player.setPosition((SPMap.width*15-player.getWidth())/2.0f, (SPMap.height*15-player.getHeight())/2.0f);
+        mPlayer.setPosition((SPMap.width*15-mPlayer.getWidth())/2.0f, (SPMap.height*15-mPlayer.getHeight())/2.0f);
         this.camera = camera;
         camera.update();
     }
@@ -109,17 +109,20 @@ public class SPJoyStick {
     public void render (OrthographicCamera camera) {
 
         //Move blockSprite with TouchPad
-        checkBounds();
+        mPlayer.checkBounds(tpDirection.getKnobPercentX()*blockSpeed, tpDirection.getKnobPercentY()*blockSpeed);
+        if (tpDirection.isTouched()) {
+            mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_MOVING, mPlayer.getUserName(), tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), mPlayer.getX(), mPlayer.getY(), 0);
+        }
 
         // for character moving
         if (tpDirection.isTouched()) {
             if (!tpShooting.isTouched()) {
                 Vector2 v = new Vector2(tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY());
-                player.changeDirection(v.angle());
+                mPlayer.changeDirection(v.angle());
             }
         }
         else
-            player.changeDirection(-1);     // means stop animation
+            mPlayer.changeDirection(-1);     // means stop animation
 
         // for shooting
         if (tpShooting.isTouched()) {
@@ -129,11 +132,11 @@ public class SPJoyStick {
                     @Override
                     public void run() {
                         Vector2 v = new Vector2(tpShooting.getKnobPercentX(), tpShooting.getKnobPercentY());
-                        player.AddBullet(player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, v.angle());
-                        player.changeDirection(v.angle());
+                        mPlayer.AddBullet(mPlayer.getX()+tpShooting.getKnobPercentX()+mPlayer.getTextureSize()/2, mPlayer.getY()+tpShooting.getKnobPercentY()+mPlayer.getTextureSize()/5, v.angle());
+                        mPlayer.changeDirection(v.angle());
 
                         // send to message
-                        mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_SHOOTING, player.getUserName(), player.getX()+tpShooting.getKnobPercentX()+player.getTextureSize()/2, player.getY()+tpShooting.getKnobPercentY()+player.getTextureSize()/5, 0, 0, v.angle());
+                        mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_SHOOTING, mPlayer.getUserName(), mPlayer.getX()+tpShooting.getKnobPercentX()+mPlayer.getTextureSize()/2, mPlayer.getY()+tpShooting.getKnobPercentY()+mPlayer.getTextureSize()/5, 0, 0, v.angle());
                     }
                 }, 0.0f, 0.2f);
             }
@@ -158,33 +161,5 @@ public class SPJoyStick {
 
     public void dispose () {
         spriteBatch.dispose();
-    }
-
-    public void checkBounds() {
-
-        float bottomLeftX = 0.0f, bottomLeftY = 0.0f, topRightX = (float) SPMap.width*15-player.getWidth(), topRightY = (float) SPMap.height*15-player.getHeight();
-
-        if (player.getX() <= bottomLeftX || player.getX() >= topRightX) {
-            player.setX(player.getX());
-        }
-        else {
-            float positionX = player.getX() + tpDirection.getKnobPercentX()*blockSpeed;
-            if (positionX >= 0 && positionX <= topRightX) {
-                player.setX(positionX);
-            }
-        }
-
-        if (player.getY() <= bottomLeftY || player.getY()+90 >= topRightY) {
-            player.setY(player.getY());
-        }
-        else {
-            float positionY = player.getY() + tpDirection.getKnobPercentY()*blockSpeed;
-            if (positionY >= 0 && positionY +90 <= topRightY) {
-                player.setY(positionY);
-            }
-        }
-
-        if (tpDirection.isTouched())
-            mGameScreen.getSPMessageHandler().notifyData(CodeDefine.MSG_PLAYER_MOVING, player.getUserName(), tpDirection.getKnobPercentX(), tpDirection.getKnobPercentY(), player.getX(), player.getY(), 0);
     }
 }
