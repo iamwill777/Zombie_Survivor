@@ -18,9 +18,16 @@ public class SPZombie extends Sprite {
 
     private Texture textureZombie;
     private Texture textureHpBar;
+    private Texture healthPack;
+    private Texture playerDamage;
     private Rectangle hitBox;
     private Integer mHealth;
     private int mIndex;
+    private int zombieDamage;
+    private int speed;
+    // 0 for no drop, 1 for health back, 2 for extra damage
+    private int zombieDrop;
+    private float dropX, dropY;
 
 
     private Animation animation;
@@ -40,13 +47,18 @@ public class SPZombie extends Sprite {
     private State previousState;
 
 
-    public SPZombie(int index, float x, float y, int health) {
+    public SPZombie(int index, float x, float y, int health, int damage, int drop, int zSpeed) {
         mIndex = index;
         textureZombie = SPAssetManager.getInstance().getZombie();
         textureHpBar = SPAssetManager.getInstance().getHealthBar();
+        healthPack = SPAssetManager.getInstance().getHealthPack();
+        playerDamage = SPAssetManager.getInstance().getPlayerDamage();
+
         hitBox = new Rectangle(x, y, 50, 100);
         mHealth = health;
-
+        zombieDamage = damage;
+        zombieDrop = drop;
+        speed = zSpeed;
         animation = SPAssetManager.getInstance().getAniZombieRight();
         currentState = State.MOVE_RIGHT;
         previousState = State.MOVE_RIGHT;
@@ -69,7 +81,6 @@ public class SPZombie extends Sprite {
         spritebatch.draw(textureHpBar,hitBox.getX()-18,hitBox.getY()+100,80*(mHealth/5.f),10);
 
     }
-
 
     public void update(float delta, SPPlayer player, boolean isConnected) {
 
@@ -114,7 +125,7 @@ public class SPZombie extends Sprite {
                     break;
                 case ATTACK:
                     if(animation.isAnimationFinished(timePassed)){
-                        player.Hit(10);
+                        player.Hit(getDamage());
                         timePassed = 0;
                     }
                     break;
@@ -135,8 +146,8 @@ public class SPZombie extends Sprite {
             currentState = State.MOVE_RIGHT;
         }
 
-        hitBox.x += direction.x;
-        hitBox.y += direction.y;
+        hitBox.x += (speed * direction.x);
+        hitBox.y += (speed * direction.y);
     }
 
     private Vector2 caculateDirection(SPPlayer player) {
@@ -147,14 +158,22 @@ public class SPZombie extends Sprite {
 
         pX = player.getX();
         pY = player.getY();
-        dx = pX-hitBox.x;
-        dy = pY-hitBox.y;
+        dx = pX - hitBox.x;
+        dy = pY - hitBox.y;
 
-        double length = Math.sqrt(dx*dx+dy*dy);
+        double length = Math.sqrt(dx * dx + dy * dy);
 
-        Vector2 normalizedDirection = new Vector2(dx/(float)length, (float) (dy/length));
+        Vector2 normalizedDirection = new Vector2(dx / (float) length, (float) (dy / length));
 
         return normalizedDirection;
+    }
+    public void dropItem(SPZombie zombie, SpriteBatch batch){
+        dropX = hitBox.getX();
+        dropY = hitBox.getY();
+        if (zombie.getDrop() == 1)
+            batch.draw(healthPack, hitBox.getX(), hitBox.getY());
+        else if (zombie.getDrop() == 2)
+            batch.draw(playerDamage, hitBox.getX(), hitBox.getY());
     }
 
     public void hit(int damage){
@@ -171,4 +190,8 @@ public class SPZombie extends Sprite {
     public int getMonsterIndex() { return mIndex; }
     public void setDead() { isAlive = false; }
     public boolean isAlive() { return isAlive; }
+    public int getDamage() {return zombieDamage;}
+    public int getDrop(){return zombieDrop;}
+    public float getDropX(){return dropX;}
+    public float getDropY(){return dropY;}
 }

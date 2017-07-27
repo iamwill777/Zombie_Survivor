@@ -3,147 +3,327 @@
 
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/core/build/libs/core-1.0.jar"
+        jar="C:\Users\lklkl\.android\build-cache\4cfbaf5b45f9a96cb4c92f9f65956db6925ddb4f\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="2099ef5c5f8a886b94306e73d5c406b3f1349c7c">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/core-1.0_430bc97c7b513a499d5d706e54f834910a79aa17.jar" />
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_91c94cb99b14e8b6f3b7f5effee90dc13cac7e2b.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/core/build/libs/core-1.0.jar"
+        jar="C:\Users\lklkl\.android\build-cache\94ba991d622e7dd3cb116079de4efa7526dcd271\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="67dd912aa643ec3ac12f058f206b501b2f31ba14">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/core-1.0_ce95bbf822a5800225768f9c650a6885ee68a3a6.jar" />
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_6062739aacd9391ed32ca03d09d773109e253b42.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/slf4j-api-1.6.1.jar"
+        jar="C:\Users\lklkl\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="37ec7b9f4640c525a3b00b6fcac9ccc99f361ed3">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/slf4j-api-1.6.1_744cc8ed8d9ba98766e1b6cf20691bc37cd2cce1.jar" />
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_f387c547aa86aba141a681df7ea5583583e302f2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/commons-lang-2.4.jar"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="16313e02a793435009f1e458fa4af5d879f6fb11">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/commons-lang-2.4_bd9a19b31325874b1dd1dd1285464fcd946e51b9.jar" />
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\okio-1.11.0_8a6f30b262bc0b83da81d9a045e90f6e5808e54a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/SFS2X_API_Java.jar"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\io.socket\socket.io-client\0.8.3\b30500232ff0668a47c9f91f02e6935457a52fb5\socket.io-client-0.8.3.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="dafefe350dbea9aa553d353427c6ad42813526fd">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/SFS2X_API_Java_35849ab4c07dd2068b7d85d18531acd2b932bb95.jar" />
+        sha1="b30500232ff0668a47c9f91f02e6935457a52fb5">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\socket.io-client-0.8.3_ee9705b5bc8ddd853c5992a05cb4b9ecb5b982b8.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/netty-3.2.2.Final.jar"
+        jar="C:\Users\lklkl\.android\build-cache\dd836f04f65faceabef43be88ba21fa230b58dde\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_07d553d68535985938fe4a20a4e32543aae1fea2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\netty-3.2.2.Final.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="d4afed2b2038db3f5298da54314575ef194f8bd0">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/netty-3.2.2.Final_6ad0cb1aac8ba32327b6fda819605d7827fc9e95.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\netty-3.2.2.Final_81c7c81dc4a43a38b4ad8d203a04c6f353f6820a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e63ba86ac927ca6f49d1964bd17886a8572518ee">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6bf77b3cd26231644dab0aec5bb748f1d7fe6ffa\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/netty-3.2.2.Final.jar"
+        jar="C:\Users\lklkl\.android\build-cache\512d00e2948df29a68da8dbbd809d04473b85e53\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="d4afed2b2038db3f5298da54314575ef194f8bd0">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/netty-3.2.2.Final_afdb70807655b80e2aae169c48c67f5592cecede.jar" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_a4490b0fe0a8e88b8ed7c8a98778f1761a348cd4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\slf4j-simple-1.6.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e4beb3e72eda6f903147475593017850d0dfd8af">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\slf4j-simple-1.6.1_15ea1620322ecbc1069cd310356f1637d093e1d6\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/jdom.jar"
+        jar="C:\Users\lklkl\.android\build-cache\e5f7094946d9de5736c2565d67f0fbedc3a404d9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_252a144e48209a6fe88652914405f83a80779eb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.android\build-cache\5e2641ce0c7cafd677f178b243843c2e8966df6c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_fde4f42182e08fd5754d2e619566d27f51b557d5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\jdom.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="1d04c0f321ea337f3661cf7ede8f4c6f653a8fdd">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/jdom_2788303e7b87a18359905ecc1fd6bcadb8460889.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\jdom_6a3a8ec349e7728b338c0fd8e2a9371438ee83d9.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/sfs2x-client-core.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="6484adb02798412ba2c4e0cc257ffb8296b78f2a">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/sfs2x-client-core_d5222ed14239d3c185db6368c47df8654986d1f6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/jdom.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\jdom.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="1d04c0f321ea337f3661cf7ede8f4c6f653a8fdd">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/jdom_c3d9a730ed9f8430fadbf6fc681c180701626539.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\jdom_6a3a8ec349e7728b338c0fd8e2a9371438ee83d9\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/sfs2x-client-core.jar"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\core\build\libs\core-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="6484adb02798412ba2c4e0cc257ffb8296b78f2a">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/sfs2x-client-core_2d319319614b46e201aa828189788164d83765a3.jar" />
+        sha1="62cc2fe93e55e0124daadc37df71791d21f478c8">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\core-1.0_c2cfb252933c9c3e60cb2384fecf1797559b3ce6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/slf4j-api-1.6.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="37ec7b9f4640c525a3b00b6fcac9ccc99f361ed3">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/slf4j-api-1.6.1_83800bfcdfd897e67b02640e6b139e548d22a36a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/slf4j-simple-1.6.1.jar"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\slf4j-simple-1.6.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="e4beb3e72eda6f903147475593017850d0dfd8af">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/slf4j-simple-1.6.1_553b678a93865a6984f2de7e0d9a042af501582e.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\slf4j-simple-1.6.1_15ea1620322ecbc1069cd310356f1637d093e1d6.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\netty-3.2.2.Final.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4afed2b2038db3f5298da54314575ef194f8bd0">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\netty-3.2.2.Final_81c7c81dc4a43a38b4ad8d203a04c6f353f6820a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\commons-lang-2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="16313e02a793435009f1e458fa4af5d879f6fb11">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\commons-lang-2.4_8cdba980f34a803c6870799ef2c7437d47b0ca5a\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/commons-lang-2.4.jar"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.6\c249ef4060a4fada952f278455c8f7b9cba3c18a\gdx-box2d-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c249ef4060a4fada952f278455c8f7b9cba3c18a">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.6_29c2e2f975981f9a737695a67a71eb24b0071c43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.android\build-cache\148f497db031a2ddbced2b41f337f23b2286114b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_dda8744fb695fe600f003c853d28c3dce70111cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.android\build-cache\5c31971c1c9c7ce3fb8af0e0b5a5def9b1f03d7c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_7f4f4405cadae1d0e3fdffab72ec1c7c55274f19.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\sfs2x-client-core.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6484adb02798412ba2c4e0cc257ffb8296b78f2a">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\sfs2x-client-core_2d4d3613fcacab6e64ac9e2138dd2ef2291ef94f\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_859a7f3545a75210f982d20c9a4f1cc01ff797c5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.android\build-cache\b8c83b4a7f88ebf7e1d492d0130f12cbb8dfdbe3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_5ef85e548103e61d70beecd407326920bce2ddcd.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\slf4j-api-1.6.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="37ec7b9f4640c525a3b00b6fcac9ccc99f361ed3">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\slf4j-api-1.6.1_fe3fd3dec5e5606c3997110c448f341f7b636b51\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\commons-lang-2.4.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="16313e02a793435009f1e458fa4af5d879f6fb11">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/commons-lang-2.4_bb63923a634513c73230625a9db8d4bb677d41db.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\commons-lang-2.4_8cdba980f34a803c6870799ef2c7437d47b0ca5a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/libs/slf4j-simple-1.6.1.jar"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\slf4j-api-1.6.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="e4beb3e72eda6f903147475593017850d0dfd8af">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/pre-dexed/debug/slf4j-simple-1.6.1_9892f594c7ec6a1483b1f7ba9103fdc8b1d7f590.jar" />
+        sha1="37ec7b9f4640c525a3b00b6fcac9ccc99f361ed3">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\slf4j-api-1.6.1_fe3fd3dec5e5606c3997110c448f341f7b636b51.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/libs/SFS2X_API_Java.jar"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\sfs2x-client-core.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6484adb02798412ba2c4e0cc257ffb8296b78f2a">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\sfs2x-client-core_2d4d3613fcacab6e64ac9e2138dd2ef2291ef94f.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_b36563a750ca7daf0a7bf01a3145a2f6ab1b1923\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.6\57c2831c870743712b808384187ea856e541878f\gdx-backend-android-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="57c2831c870743712b808384187ea856e541878f">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.6_13f7a6ce2125c78725817f418d41f983aaf9279a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.5.0\4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83\okhttp-3.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\okhttp-3.5.0_37e9cffa3635fdef73e4d0610c45d22f788f44c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.6\47d1e9b890e364ec28f128e9bb3b9a12a94c164\gdx-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="047d1e9b890e364ec28f128e9bb3b9a12a94c164">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\gdx-1.9.6_98c83a948666a7d6ae4b16a14e37b7e0e6fef73e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.android\build-cache\f1880953774183f6e96aea24c745e735905a56d4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\classes_441d1166db379ff0207714684bc23658bf9cde59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\SFS2X_API_Java.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="dafefe350dbea9aa553d353427c6ad42813526fd">
-        <dex dex="/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/pre-dexed/debug/SFS2X_API_Java_9334663292887daabd28650975c7e906a4692803.jar" />
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\SFS2X_API_Java_d1dd5c6ec3a6e0aa4315ede0ac003dedfd68bb3d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lklkl\.gradle\caches\modules-2\files-2.1\io.socket\engine.io-client\0.8.3\854b49396e1e9f9bb0ab025062ddb49c4ed65ca1\engine.io-client-0.8.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="854b49396e1e9f9bb0ab025062ddb49c4ed65ca1">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\pre-dexed\debug\engine.io-client-0.8.3_df6d00230f0784705ad51cf8b52084b0ec2abdf5.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\libs\SFS2X_API_Java.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dafefe350dbea9aa553d353427c6ad42813526fd">
+        <dex dex="C:\Users\lklkl\Documents\GitHub\zombie_android_june\android\build\intermediates\transforms\dex\debug\folders\1000\2\SFS2X_API_Java_d1dd5c6ec3a6e0aa4315ede0ac003dedfd68bb3d\classes.dex" />
     </item>
 
 </items>

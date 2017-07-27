@@ -1,74 +1,26 @@
 [
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_media_action.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_action.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_cancel_action.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_custom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_custom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_cancel_action.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_cancel_action.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_custom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_action.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_media_action.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/layout-v11/notification_template_big_media_narrow.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
     }
 ]

@@ -2,6 +2,7 @@ package com.somoplay.zombie.sprite;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.somoplay.zombie.main.SPGameScene;
 import com.somoplay.zombie.scene.SPMap;
@@ -24,6 +25,7 @@ public class SPSpriteManager {
     private SPPlayer mPlayer;
     private ArrayList<SPPlayer> mlstPlayers;       // for other players
     private ArrayList<SPZombie> mlstZombie;
+    private ArrayList<Integer> items;
     private Random random;
     private SPGameScene mMain;
 
@@ -46,12 +48,12 @@ public class SPSpriteManager {
 
     public void createStandaloneZombies(int count) {
         for (int i=0; i<=count; i++) {
-            addZombie(i, Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE), 5);
+            addZombie(i, Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE), 5, 10, 1, 2);
         }
     }
 
-    public void addZombie(int index, float fX, float fY, int health) {
-        mlstZombie.add(new SPZombie(index, fX, fY, health));
+    public void addZombie(int index, float fX, float fY, int health, int damage, int drop, int speed) {
+        mlstZombie.add(new SPZombie(index, fX, fY, health, damage, drop, speed));
     }
 
     public void addPlayers(SPPlayer newPlayer) {
@@ -98,6 +100,7 @@ public class SPSpriteManager {
     public void render(OrthographicCamera camera, SpriteBatch batch) {
         for(int i=0; i<mlstZombie.size(); i++) {
             if (!mlstZombie.get(i).isAlive()) {
+                mlstZombie.get(i).dropItem(mlstZombie.get(i), batch);
                 mlstZombie.remove(i);
             }
             else
@@ -149,7 +152,6 @@ public class SPSpriteManager {
         mPlayer.setY(mPlayer.getY()-1);
         if (!stick.bIsShooting())
             mPlayer.changeDirection(270);
-        else
             mPlayer.changeDirection(mPlayer.getShootingAngle());
     }
 
@@ -161,7 +163,7 @@ public class SPSpriteManager {
             mPlayer.changeDirection(mPlayer.getShootingAngle());
     }
 
-    public void updateBullets() {
+    public void updateBullets(SpriteBatch batch) {
         int monsterIndex = mPlayer.updateBullets(mlstZombie);
         if (monsterIndex >= 0) {
             removeMonster(monsterIndex);

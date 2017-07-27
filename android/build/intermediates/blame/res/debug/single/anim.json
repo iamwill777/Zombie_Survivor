@@ -1,122 +1,42 @@
 [
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_bottom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_top.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_enter.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_bottom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_exit.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_top.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_in.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_enter.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_top.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_enter.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_exit.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_in_top.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_popup_exit.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/anim/abc_slide_out_bottom.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\anim\\abc_fade_out.xml"
     }
 ]

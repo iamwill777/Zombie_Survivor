@@ -1,50 +1,18 @@
 [
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_edit_text_material.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_edit_text_material.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_edit_text_material.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/notification_action_background.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/notification_action_background.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/notification_action_background.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/libgdx/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie/android/zombie/android/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "/Users/yaolu/Documents/projects/eadate/zombie_android_june/android/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/Users/yaolu/.android/build-cache/b8410c1f6cdca28c9c9f441f8645e6f02de1270d/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "merged": "C:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\lklkl\\.android\\build-cache\\cdf50b1f9b0afbf079f0cea30f22e5f59ebb9f74\\output\\res\\drawable-v21\\notification_action_background.xml"
     }
 ]

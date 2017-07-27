@@ -54,12 +54,18 @@ public class SPAssetManager {
     private String mZombieSheetName = "Zombie/enemyAttack.png";
     private Animation mZombieRight, mZombieAttack;
 
+    // Placeholders for dropped items
+    private Texture mHealthPack;
+    private Texture mPlayerDamage;
+
     // bitmap
     private BitmapFont mBitmapFont;
 
     public void Init() {
         mAssetManager.load("resources/zombie.png", Texture.class);
         mAssetManager.load("resources/bullet.png", Texture.class);
+        mAssetManager.load("resources/healthpack.png", Texture.class);
+        mAssetManager.load("resources/playerdamage.png", Texture.class);
         mAssetManager.load("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         for(int i=1; i<=22; i++) {
             String strName = "players/character10/" + String.format("%02d", i) + ".png";
@@ -80,6 +86,8 @@ public class SPAssetManager {
     public void makeResource() {
         mTxtZombie = mAssetManager.get("resources/zombie.png", Texture.class);
         mTxtBullet = mAssetManager.get("resources/bullet.png", Texture.class);
+        mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);
+        mPlayerDamage = mAssetManager.get("resources/playerdamage.png", Texture.class);
 
         // make animation from atlas
         mAtlasWalking = mAssetManager.get("players/character10/right/walkingRight.atlas", TextureAtlas.class);
@@ -192,6 +200,8 @@ public class SPAssetManager {
     public Texture getHealthBarBorder() { return mHealthBarBorder; }
     public Texture getMap() { return mMap; }
     public Texture getMiniPlayer(){ return mMiniPlayer; }
+    public Texture getHealthPack() {return mHealthPack;}
+    public Texture getPlayerDamage(){return mPlayerDamage;}
     public BitmapFont getBitmapFont() { return mBitmapFont; }
 
     public boolean isbIsLoaded() {

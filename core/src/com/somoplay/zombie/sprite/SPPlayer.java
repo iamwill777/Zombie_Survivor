@@ -179,7 +179,6 @@ public class SPPlayer extends Sprite {
                     zombie.hit(weaponPower);
                     if (zombie.getHealth()<=0) {
                         bullet.setDead();
-
                         // send message to server, to kill zombies with index
                         return zombie.getMonsterIndex();
                     }
