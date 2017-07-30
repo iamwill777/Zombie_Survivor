@@ -46,6 +46,7 @@ public class SPPlayer extends Sprite {
     private float textureSize = 0.0f;
     private float mSaveShootingAngle = 0.0f;
     private ArrayList<MovingPosition> movingPositionArrayList  = new ArrayList<MovingPosition>();
+    private ArrayList<SPItem> items = new ArrayList<SPItem>();
     private float mMovingTime = 3.0f;
     private boolean mIsMainPlayer = false;
     private float saveShootingAngle = 0.0f;
@@ -79,8 +80,8 @@ public class SPPlayer extends Sprite {
 
         //Debug method is in the "draw()" function;
         health = 100;
-        weaponPower = 2;
-        hitBox = new Rectangle(getX(),getY(),100.f,100.f);
+        weaponPower = 4;
+        hitBox = new Rectangle(getX(),getY(),75.f,75.f);
 
 
         hpBarTexture = SPAssetManager.getInstance().getHealthBar();
@@ -158,6 +159,12 @@ public class SPPlayer extends Sprite {
             else
                 bulletArrayList.get(i).draw(spritebatch);
         }
+        for (int i = 0; i<items.size(); i++){
+            if (!items.get(i).isItemThere())
+                items.remove(i);
+            else
+                items.get(i).drawItem(spritebatch);
+        }
 
         hpBar.setPosition(getX()+15,getY()+115);
         hpBarBorder.setPosition(getX()-240,getY()+19);
@@ -179,6 +186,7 @@ public class SPPlayer extends Sprite {
                     zombie.hit(weaponPower);
                     if (zombie.getHealth()<=0) {
                         bullet.setDead();
+                        items.add(new SPItem(zombie));
                         // send message to server, to kill zombies with index
                         return zombie.getMonsterIndex();
                     }
@@ -199,6 +207,20 @@ public class SPPlayer extends Sprite {
             }
         }
         return -1;
+    }
+    public void collectItem(){
+        for (SPItem item: items){
+            if (hitBox.overlaps(item.getHitBox())){
+                if (item.getDrop() == 1) {
+                    health += 10;
+                    item.setDead();
+                }
+                else if (item.getDrop() == 2){
+                    weaponPower += 3;
+                    item.setDead();
+                }
+            }
+        }
     }
 
     public float getShootingAngle() { return saveShootingAngle; }

@@ -1,0 +1,50 @@
+
+maleattacking.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (2)
+  rotate: false
+  xy: 1, 1
+  size: 430, 519
+  orig: 430, 519
+  offset: 0, 0
+  index: -1
+Attack (3)
+  rotate: false
+  xy: 433, 1
+  size: 430, 519
+  orig: 430, 519
+  offset: 0, 0
+  index: -1
+
+maleattacking2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (4)
+  rotate: false
+  xy: 1, 1
+  size: 430, 519
+  orig: 430, 519
+  offset: 0, 0
+  index: -1
+Attack (5)
+  rotate: false
+  xy: 433, 1
+  size: 430, 519
+  orig: 430, 519
+  offset: 0, 0
+  index: -1
+
+maleattacking3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (6)
+  rotate: false
+  xy: 1, 1
+  size: 430, 519
+  orig: 430, 519
+  offset: 0, 0
+  index: -1

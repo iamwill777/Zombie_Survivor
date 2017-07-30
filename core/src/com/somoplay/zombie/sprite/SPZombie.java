@@ -9,7 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.somoplay.zombie.asset.SPAssetManager;
-
+import com.somoplay.zombie.scene.SPMap;
+import java.util.ArrayList;
 /**
  * Created by yaolu on 2017-06-15.
  */
@@ -17,9 +18,8 @@ import com.somoplay.zombie.asset.SPAssetManager;
 public class SPZombie extends Sprite {
 
     private Texture textureZombie;
+    private int zType;
     private Texture textureHpBar;
-    private Texture healthPack;
-    private Texture playerDamage;
     private Rectangle hitBox;
     private Integer mHealth;
     private int mIndex;
@@ -27,8 +27,7 @@ public class SPZombie extends Sprite {
     private int speed;
     // 0 for no drop, 1 for health back, 2 for extra damage
     private int zombieDrop;
-    private float dropX, dropY;
-
+    private ArrayList<SPSlime> slimes = new ArrayList<SPSlime>();
 
     private Animation animation;
     private float timePassed = 0;
@@ -47,22 +46,26 @@ public class SPZombie extends Sprite {
     private State previousState;
 
 
-    public SPZombie(int index, float x, float y, int health, int damage, int drop, int zSpeed) {
+    public SPZombie(int index, int type, float x, float y, int health, int damage, int drop, int zSpeed) {
         mIndex = index;
+        zType = type;
         textureZombie = SPAssetManager.getInstance().getZombie();
         textureHpBar = SPAssetManager.getInstance().getHealthBar();
-        healthPack = SPAssetManager.getInstance().getHealthPack();
-        playerDamage = SPAssetManager.getInstance().getPlayerDamage();
 
-        hitBox = new Rectangle(x, y, 50, 100);
+        if (type == 0)
+            hitBox = new Rectangle(x, y, 100, 100);
+        else if (type == 1)
+            hitBox = new Rectangle(x, y, 50, 100);
         mHealth = health;
         zombieDamage = damage;
         zombieDrop = drop;
         speed = zSpeed;
-        animation = SPAssetManager.getInstance().getAniZombieRight();
+        if (type == 0)
+            animation = SPAssetManager.getInstance().getWalkAnimation();
+        else if (type == 1)
+            animation = SPAssetManager.getInstance().getAniZombieRight();
         currentState = State.MOVE_RIGHT;
         previousState = State.MOVE_RIGHT;
-
     }
 
     public void draw(SpriteBatch spritebatch) {
@@ -78,7 +81,17 @@ public class SPZombie extends Sprite {
         previousState = currentState;
 
         //Draw Hp bar;
-        spritebatch.draw(textureHpBar,hitBox.getX()-18,hitBox.getY()+100,80*(mHealth/5.f),10);
+        if (zType == 0)
+            spritebatch.draw(textureHpBar,hitBox.getX()+10,hitBox.getY()+100,20*(mHealth/5.f),10);
+        else if (zType == 1)
+            spritebatch.draw(textureHpBar,hitBox.getX()-18,hitBox.getY()+100,20*(mHealth/5.f),10);
+        // Draws slime
+        for (int i = 0; i < slimes.size(); i++){
+            if (!slimes.get(i).isAlive())
+                slimes.remove(i);
+            else
+                slimes.get(i).draw(spritebatch);
+        }
 
     }
 
@@ -88,16 +101,25 @@ public class SPZombie extends Sprite {
             case MOVE_LEFT:
                 faceRight = -1;
                 canMove = true;
-                animation = SPAssetManager.getInstance().getAniZombieRight();
+                if (zType == 0)
+                    animation = SPAssetManager.getInstance().getWalkAnimation();
+                else if (zType == 1)
+                    animation = SPAssetManager.getInstance().getAniZombieRight();
                 break;
             case MOVE_RIGHT:
                 faceRight = 1;
                 canMove = true;
-                animation = SPAssetManager.getInstance().getAniZombieRight();
+                if (zType == 0)
+                    animation = SPAssetManager.getInstance().getWalkAnimation();
+                else if (zType == 1)
+                    animation = SPAssetManager.getInstance().getAniZombieRight();
                 break;
             case ATTACK:
                 canMove = false;
-                animation = SPAssetManager.getInstance().getAniZombieAttack();
+                if (zType == 0)
+                    animation = SPAssetManager.getInstance().getAttackAnimation();
+                else if (zType == 1)
+                    animation = SPAssetManager.getInstance().getAniZombieAttack();
                 break;
         }
 
@@ -109,36 +131,80 @@ public class SPZombie extends Sprite {
         OverlapPlayer(player,delta);
 
     }
+    public void updateSlime(SPPlayer player){
+        for (SPSlime slime:slimes){
+            slime.update(Gdx.graphics.getDeltaTime());
+            if (player.getHitBox().overlaps(slime.getHitBox())){
+                player.Hit(zombieDamage);
+                slime.setDead();
+            }
+            double originX = hitBox.getX();
+            double originY = hitBox.getY();
+            double slimeX = slime.getHitBox().getX();
+            double slimeY = slime.getHitBox().getY();
+            if (Math.abs(originX - slimeX) >= 400 || slimeX <= 0.0f || slimeX >= SPMap.width * 15)
+                slime.setDead();
+            if (Math.abs(originY - slimeY) >= 400 || slimeY <= 0.0f || slimeY >= SPMap.width * 15)
+                slime.setDead();
+        }
+    }
+    public void addSlime(float x, float y, float angle){
+        slimes.add(new SPSlime(x, y, angle));
+    }
 
     private void OverlapPlayer(SPPlayer player, float delta) {
-
-        if(hitBox.overlaps(player.getHitBox())
-            //Math.abs(hitBox.x-player.getX())<=20&&
-            //Math.abs(hitBox.y-player.getY())<=25
-                ){
-            switch (currentState){
-                case MOVE_LEFT:
-                    currentState = State.ATTACK;
-                    break;
-                case MOVE_RIGHT:
-                    currentState = State.ATTACK;
-                    break;
-                case ATTACK:
-                    if(animation.isAnimationFinished(timePassed)){
-                        player.Hit(getDamage());
-                        timePassed = 0;
+        if (zType == 0){
+            if (direction(player) < 200){
+                    switch (currentState) {
+                        case MOVE_LEFT:
+                            currentState = State.ATTACK;
+                            break;
+                        case MOVE_RIGHT:
+                            currentState = State.ATTACK;
+                            break;
+                        case ATTACK:
+                            if (animation.isAnimationFinished(timePassed)) {
+                                addSlime(hitBox.getX() + 30, hitBox.getY() + 30, calculateAngle(player));
+                                if (faceRight == -1 && player.getHitBox().getX() > hitBox.getX())
+                                    faceRight = 1;
+                                if (faceRight == 1 && player.getHitBox().getX() < hitBox.getX())
+                                    faceRight = -1;
+                                timePassed = 0;
+                            }
+                            break;
                     }
-                    break;
+                } else {
+                    if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
+                        currentState = State.MOVE_RIGHT;
+                    }
             }
-        }else {
-            if(currentState ==State.ATTACK&&animation.isAnimationFinished(timePassed)){
-                currentState = State.MOVE_RIGHT;
+        }
+        else if (zType == 1) {
+            if (hitBox.overlaps(player.getHitBox())) {
+                switch (currentState) {
+                    case MOVE_LEFT:
+                        currentState = State.ATTACK;
+                        break;
+                    case MOVE_RIGHT:
+                        currentState = State.ATTACK;
+                        break;
+                    case ATTACK:
+                        if (animation.isAnimationFinished(timePassed)) {
+                            player.Hit(getDamage());
+                            timePassed = 0;
+                        }
+                        break;
+                }
+            } else {
+                if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
+                    currentState = State.MOVE_RIGHT;
+                }
             }
         }
     }
 
     private void chasePlayer(SPPlayer player) {
-        Vector2 direction = caculateDirection(player);
+        Vector2 direction = calculateDirection(player);
 
         if (direction.x<0){
             currentState = State.MOVE_LEFT;
@@ -150,7 +216,7 @@ public class SPZombie extends Sprite {
         hitBox.y += (speed * direction.y);
     }
 
-    private Vector2 caculateDirection(SPPlayer player) {
+    private Vector2 calculateDirection(SPPlayer player) {
         float pX;
         float pY;
         float dx;
@@ -167,13 +233,13 @@ public class SPZombie extends Sprite {
 
         return normalizedDirection;
     }
-    public void dropItem(SPZombie zombie, SpriteBatch batch){
-        dropX = hitBox.getX();
-        dropY = hitBox.getY();
-        if (zombie.getDrop() == 1)
-            batch.draw(healthPack, hitBox.getX(), hitBox.getY());
-        else if (zombie.getDrop() == 2)
-            batch.draw(playerDamage, hitBox.getX(), hitBox.getY());
+    private float direction(SPPlayer player){
+        float length = (float)(Math.sqrt(Math.pow(player.getX() - hitBox.x, 2) + Math.pow(player.getY() - hitBox.y, 2)));
+        return length;
+    }
+    private float calculateAngle(SPPlayer player){
+        float angle = (float)Math.toDegrees(Math.atan2(player.getY() - hitBox.getY(), (player.getX() - hitBox.getX())));
+        return angle;
     }
 
     public void hit(int damage){
@@ -192,6 +258,5 @@ public class SPZombie extends Sprite {
     public boolean isAlive() { return isAlive; }
     public int getDamage() {return zombieDamage;}
     public int getDrop(){return zombieDrop;}
-    public float getDropX(){return dropX;}
-    public float getDropY(){return dropY;}
+    public int getType(){return zType;}
 }

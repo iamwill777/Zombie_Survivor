@@ -48,12 +48,12 @@ public class SPSpriteManager {
 
     public void createStandaloneZombies(int count) {
         for (int i=0; i<=count; i++) {
-            addZombie(i, Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE), 5, 10, 1, 2);
+            addZombie(i, Math.abs(random.nextInt() % 2), Math.abs(random.nextInt() % SPMap.width * SPMapConstant.TILESIZE), Math.abs(random.nextInt() % SPMap.height * SPMapConstant.TILESIZE), 20, 10, Math.abs(random.nextInt() % 3), 2);
         }
     }
 
-    public void addZombie(int index, float fX, float fY, int health, int damage, int drop, int speed) {
-        mlstZombie.add(new SPZombie(index, fX, fY, health, damage, drop, speed));
+    public void addZombie(int index, int type, float fX, float fY, int health, int damage, int drop, int speed) {
+        mlstZombie.add(new SPZombie(index, type, fX, fY, health, damage, drop, speed));
     }
 
     public void addPlayers(SPPlayer newPlayer) {
@@ -100,11 +100,11 @@ public class SPSpriteManager {
     public void render(OrthographicCamera camera, SpriteBatch batch) {
         for(int i=0; i<mlstZombie.size(); i++) {
             if (!mlstZombie.get(i).isAlive()) {
-                mlstZombie.get(i).dropItem(mlstZombie.get(i), batch);
                 mlstZombie.remove(i);
             }
-            else
+            else {
                 mlstZombie.get(i).draw(batch);
+            }
         }
 
         mPlayer.draw(batch);
@@ -173,6 +173,14 @@ public class SPSpriteManager {
         for(SPPlayer player: mlstPlayers) {
             player.updateBullets(mlstZombie);
         }
+    }
+    public void updateSlime(){
+        for (int i = 0; i < mlstZombie.size(); i++){
+            mlstZombie.get(i).updateSlime(mPlayer);
+        }
+    }
+    public void collectItems(){
+        mPlayer.collectItem();
     }
 
     public void updateEnemy(float dt) {

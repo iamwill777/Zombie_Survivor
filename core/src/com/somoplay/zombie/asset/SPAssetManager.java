@@ -3,6 +3,7 @@ package com.somoplay.zombie.asset;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -54,6 +55,13 @@ public class SPAssetManager {
     private String mZombieSheetName = "Zombie/enemyAttack.png";
     private Animation mZombieRight, mZombieAttack;
 
+    // Male zombie
+    private TextureAtlas maleWalkAtlas;
+    private TextureAtlas maleAttackAtlas;
+    private Animation<TextureRegion> mWalkAnimation;
+    private Animation<TextureRegion> mAttackAnimation;
+    private Texture slime;
+
     // Placeholders for dropped items
     private Texture mHealthPack;
     private Texture mPlayerDamage;
@@ -66,7 +74,10 @@ public class SPAssetManager {
         mAssetManager.load("resources/bullet.png", Texture.class);
         mAssetManager.load("resources/healthpack.png", Texture.class);
         mAssetManager.load("resources/playerdamage.png", Texture.class);
+        mAssetManager.load("Zombie/Slime.png", Texture.class);
         mAssetManager.load("players/character10/right/walkingRight.atlas", TextureAtlas.class);
+        mAssetManager.load("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
+        mAssetManager.load("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
         for(int i=1; i<=22; i++) {
             String strName = "players/character10/" + String.format("%02d", i) + ".png";
             mAssetManager.load(strName, Texture.class);
@@ -86,12 +97,19 @@ public class SPAssetManager {
     public void makeResource() {
         mTxtZombie = mAssetManager.get("resources/zombie.png", Texture.class);
         mTxtBullet = mAssetManager.get("resources/bullet.png", Texture.class);
-        mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);
+        mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);;
         mPlayerDamage = mAssetManager.get("resources/playerdamage.png", Texture.class);
+        slime = mAssetManager.get("Zombie/Slime.png");
 
         // make animation from atlas
         mAtlasWalking = mAssetManager.get("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         mAniCharRight = new Animation(1/10f, mAtlasWalking.getRegions());
+
+        // zombie animation
+        maleAttackAtlas = mAssetManager.get("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
+        maleWalkAtlas = mAssetManager.get("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
+        mWalkAnimation = new Animation(0.2f, maleWalkAtlas.getRegions());
+        mAttackAnimation = new Animation(0.15f, maleAttackAtlas.getRegions());
 
         // make animation from texture
         ArrayList<String> lstTexture = new ArrayList<String>();
@@ -168,6 +186,7 @@ public class SPAssetManager {
         mMiniPlayer = mAssetManager.get(mMiniPlayerName,Texture.class);
 
         bIsLoaded = true;
+
     }
 
     public Animation makeCharacterAnimation(int regionCount, ArrayList<String> lstTexture) {
@@ -195,6 +214,8 @@ public class SPAssetManager {
     public Animation getAniCharUpRight() { return mAniCharUpRight; }
     public Animation getAniZombieRight() { return mZombieRight; }
     public Animation getAniZombieAttack() { return  mZombieAttack; }
+    public Animation<TextureRegion> getWalkAnimation(){return mWalkAnimation; }
+    public Animation<TextureRegion> getAttackAnimation(){return mAttackAnimation;}
 
     public Texture getHealthBar() { return mHealthBar; }
     public Texture getHealthBarBorder() { return mHealthBarBorder; }
@@ -202,6 +223,7 @@ public class SPAssetManager {
     public Texture getMiniPlayer(){ return mMiniPlayer; }
     public Texture getHealthPack() {return mHealthPack;}
     public Texture getPlayerDamage(){return mPlayerDamage;}
+    public Texture getSlime(){return slime;}
     public BitmapFont getBitmapFont() { return mBitmapFont; }
 
     public boolean isbIsLoaded() {

@@ -35,6 +35,7 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
     private SPMiniMap spMiniMap;
     private SpriteBatch spriteBatch;
 
+
     private SPSocketManager mSocketManager;
     private SPMainListener spMainListener;
 
@@ -81,6 +82,8 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
             generalUpdate();
             spSpriteManager.render(camera, spriteBatch);
             spSpriteManager.updateBullets(spriteBatch);
+            spSpriteManager.updateSlime();
+            spSpriteManager.collectItems();
             spSpriteManager.updateEnemy(delta);
             spriteBatch.end();
 
@@ -181,7 +184,7 @@ public class SPGameScene implements Screen, SPIRecvMessageHandler
                     if (monsters != null && monsters.length() > 0) {
                         for (int i = 0; i < monsters.length(); i++) {
                             JSONObject objectInArray = monsters.getJSONObject(i);
-                            this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"), objectInArray.getInt("damage"), objectInArray.getInt("drop"), objectInArray.getInt("speed"));
+                            this.getSPSpriteManager().addZombie(objectInArray.getInt("mobIndex"), objectInArray.getInt("type"), (float) objectInArray.getDouble("posX"), (float) objectInArray.getDouble("posY"), objectInArray.getInt("health"), objectInArray.getInt("damage"), objectInArray.getInt("drop"), objectInArray.getInt("speed"));
                         }
                     }
                     break;

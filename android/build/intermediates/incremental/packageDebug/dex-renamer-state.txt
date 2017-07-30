@@ -1,4 +1,4 @@
-#Tue Jul 25 18:01:52 EDT 2017
+#Sun Jul 30 14:19:39 EDT 2017
 base.0=C\:\\Users\\lklkl\\Documents\\GitHub\\zombie_android_june\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_6bf77b3cd26231644dab0aec5bb748f1d7fe6ffa
 renamed.1=classes2.dex
 renamed.0=classes.dex
