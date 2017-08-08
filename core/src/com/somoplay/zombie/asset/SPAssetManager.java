@@ -113,7 +113,7 @@ public class SPAssetManager {
         //mWalkAnimation = new Animation<TextureRegion>(1/5f, walkingAtlas.getRegions());
         mAttackAnimation = new Animation(1/10f, attackAtlas.getRegions());
         slime = mAssetManager.get("Zombie/Slime.png");
-        pe = mAssetManager.get("blood.p");
+        pe = mAssetManager.get("Zombie/blood.p");
 
         // make animation from atlas
         mAtlasWalking = mAssetManager.get("players/character10/right/walkingRight.atlas", TextureAtlas.class);
