@@ -3,6 +3,7 @@ package com.somoplay.zombie.asset;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -56,15 +57,18 @@ public class SPAssetManager {
     private Animation mZombieRight, mZombieAttack;
 
     // Male zombie
-    private TextureAtlas maleWalkAtlas;
-    private TextureAtlas maleAttackAtlas;
-    private Animation<TextureRegion> mWalkAnimation;
-    private Animation<TextureRegion> mAttackAnimation;
+    Array<TextureRegion> zombieWalk;
+    private TextureAtlas attackAtlas;
+    private Animation mWalkAnimation;
+    private Animation mAttackAnimation;
     private Texture slime;
 
     // Placeholders for dropped items
     private Texture mHealthPack;
     private Texture mPlayerDamage;
+
+    // Particle effect
+    private ParticleEffect pe;
 
     // bitmap
     private BitmapFont mBitmapFont;
@@ -75,12 +79,15 @@ public class SPAssetManager {
         mAssetManager.load("resources/healthpack.png", Texture.class);
         mAssetManager.load("resources/playerdamage.png", Texture.class);
         mAssetManager.load("Zombie/Slime.png", Texture.class);
-        mAssetManager.load("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         mAssetManager.load("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
-        mAssetManager.load("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
+        mAssetManager.load("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         for(int i=1; i<=22; i++) {
             String strName = "players/character10/" + String.format("%02d", i) + ".png";
             mAssetManager.load(strName, Texture.class);
+        }
+        for (int i = 1; i < 11; i++){
+            String name = "Zombie/male/Walk/" + i + ".png";
+            mAssetManager.load(name, Texture.class);
         }
 
         mAssetManager.load(mHealthBarName, Texture.class);
@@ -88,8 +95,10 @@ public class SPAssetManager {
         mAssetManager.load(mMapName,Texture.class);
         mAssetManager.load(mMiniPlayerName,Texture.class);
         mAssetManager.load(mZombieSheetName,Texture.class);
+        mAssetManager.load("Zombie/blood.p", ParticleEffect.class);
 
         frames = new Array<TextureRegion>();
+        zombieWalk = new Array<TextureRegion>();
 
         mBitmapFont = new BitmapFont();
     }
@@ -97,22 +106,23 @@ public class SPAssetManager {
     public void makeResource() {
         mTxtZombie = mAssetManager.get("resources/zombie.png", Texture.class);
         mTxtBullet = mAssetManager.get("resources/bullet.png", Texture.class);
-        mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);;
+        mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);
         mPlayerDamage = mAssetManager.get("resources/playerdamage.png", Texture.class);
+        //walkingAtlas = mAssetManager.get("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
+        attackAtlas = mAssetManager.get("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
+        //mWalkAnimation = new Animation<TextureRegion>(1/5f, walkingAtlas.getRegions());
+        mAttackAnimation = new Animation(1/10f, attackAtlas.getRegions());
         slime = mAssetManager.get("Zombie/Slime.png");
+        pe = mAssetManager.get("blood.p");
 
         // make animation from atlas
         mAtlasWalking = mAssetManager.get("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         mAniCharRight = new Animation(1/10f, mAtlasWalking.getRegions());
 
-        // zombie animation
-        maleAttackAtlas = mAssetManager.get("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
-        maleWalkAtlas = mAssetManager.get("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
-        mWalkAnimation = new Animation(0.2f, maleWalkAtlas.getRegions());
-        mAttackAnimation = new Animation(0.15f, maleAttackAtlas.getRegions());
 
         // make animation from texture
         ArrayList<String> lstTexture = new ArrayList<String>();
+
         lstTexture.add("players/character10/09.png");
         lstTexture.add("players/character10/10.png");
         lstTexture.add("players/character10/11.png");
@@ -157,6 +167,9 @@ public class SPAssetManager {
         mZombieSheet = mAssetManager.get(mZombieSheetName,Texture.class);
 
         //Bad sprite sheet, so I have to make animation in this way..lol..
+        for (int i = 1; i < 11; i++)
+            zombieWalk.add(new TextureRegion(mAssetManager.get("Zombie/male/Walk/" + i + ".png", Texture.class)));
+        mWalkAnimation = new Animation(0.1f, zombieWalk, Animation.PlayMode.LOOP);
 
         frames.add(new TextureRegion(mZombieSheet,0,152,25,43));
         frames.add(new TextureRegion(mZombieSheet,27,152,23,43));
@@ -214,8 +227,9 @@ public class SPAssetManager {
     public Animation getAniCharUpRight() { return mAniCharUpRight; }
     public Animation getAniZombieRight() { return mZombieRight; }
     public Animation getAniZombieAttack() { return  mZombieAttack; }
-    public Animation<TextureRegion> getWalkAnimation(){return mWalkAnimation; }
-    public Animation<TextureRegion> getAttackAnimation(){return mAttackAnimation;}
+    public Animation getWalkAnimation(){return mWalkAnimation; }
+    public Animation getAttackAnimation(){return mAttackAnimation;}
+    public ParticleEffect getPe(){return pe;}
 
     public Texture getHealthBar() { return mHealthBar; }
     public Texture getHealthBarBorder() { return mHealthBarBorder; }

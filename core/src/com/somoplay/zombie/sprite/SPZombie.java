@@ -153,52 +153,51 @@ public class SPZombie extends Sprite {
     }
 
     private void OverlapPlayer(SPPlayer player, float delta) {
-        if (zType == 0){
-            if (direction(player) < 200){
-                    switch (currentState) {
-                        case MOVE_LEFT:
-                            currentState = State.ATTACK;
-                            break;
-                        case MOVE_RIGHT:
-                            currentState = State.ATTACK;
-                            break;
-                        case ATTACK:
-                            if (animation.isAnimationFinished(timePassed)) {
-                                addSlime(hitBox.getX() + 30, hitBox.getY() + 30, calculateAngle(player));
-                                if (faceRight == -1 && player.getHitBox().getX() > hitBox.getX())
-                                    faceRight = 1;
-                                if (faceRight == 1 && player.getHitBox().getX() < hitBox.getX())
-                                    faceRight = -1;
-                                timePassed = 0;
-                            }
-                            break;
+//        if (zType == 0){
+//            if (direction(player) < 200){
+//                    switch (currentState) {
+//                        case MOVE_LEFT:
+//                            currentState = State.ATTACK;
+//                            break;
+//                        case MOVE_RIGHT:
+//                            currentState = State.ATTACK;
+//                            break;
+//                        case ATTACK:
+//                            if (animation.isAnimationFinished(timePassed)) {
+//                                addSlime(hitBox.getX() + 30, hitBox.getY() + 30, calculateAngle(player));
+//                                if (faceRight == -1 && player.getHitBox().getX() > hitBox.getX())
+//                                    faceRight = 1;
+//                                if (faceRight == 1 && player.getHitBox().getX() < hitBox.getX())
+//                                    faceRight = -1;
+//                                timePassed = 0;
+//                            }
+//                            break;
+//                    }
+//                } else {
+//                    if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
+//                        currentState = State.MOVE_RIGHT;
+//                    }
+//            }
+//        }
+        if (hitBox.overlaps(player.getHitBox())) {
+            switch (currentState) {
+                case MOVE_LEFT:
+                    currentState = State.ATTACK;
+                    break;
+                case MOVE_RIGHT:
+                    currentState = State.ATTACK;
+                    break;
+                case ATTACK:
+                    if (animation.isAnimationFinished(timePassed)) {
+                        player.Hit(getDamage());
+                        timePassed = 0;
                     }
-                } else {
-                    if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
-                        currentState = State.MOVE_RIGHT;
-                    }
+                    break;
             }
         }
-        else if (zType == 1) {
-            if (hitBox.overlaps(player.getHitBox())) {
-                switch (currentState) {
-                    case MOVE_LEFT:
-                        currentState = State.ATTACK;
-                        break;
-                    case MOVE_RIGHT:
-                        currentState = State.ATTACK;
-                        break;
-                    case ATTACK:
-                        if (animation.isAnimationFinished(timePassed)) {
-                            player.Hit(getDamage());
-                            timePassed = 0;
-                        }
-                        break;
-                }
-            } else {
-                if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
-                    currentState = State.MOVE_RIGHT;
-                }
+        else{
+            if (currentState == State.ATTACK && animation.isAnimationFinished(timePassed)) {
+                currentState = State.MOVE_RIGHT;
             }
         }
     }

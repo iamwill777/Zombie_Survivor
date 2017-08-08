@@ -19,14 +19,14 @@ public class SPItem {
         isThere = true;
         healthPack = SPAssetManager.getInstance().getHealthPack();
         playerDamage = SPAssetManager.getInstance().getPlayerDamage();
-        hitBox = new Rectangle(zombieDrop.getHitBox().getX(), zombieDrop.getHitBox().getY(), 48, 48);
+        hitBox = new Rectangle(zombieDrop.getHitBox().getX(), zombieDrop.getHitBox().getY() + 50, 48, 48);
         drop = zombieDrop.getDrop();
     }
     public void drawItem(SpriteBatch batch){
         if (drop == 1)
-            batch.draw(healthPack, hitBox.x, hitBox.y);
+            batch.draw(healthPack, hitBox.x, hitBox.y, hitBox.getWidth(), hitBox.getHeight());
         else if (drop == 2)
-            batch.draw(playerDamage, hitBox.x, hitBox.y);
+            batch.draw(playerDamage, hitBox.x, hitBox.y, hitBox.getWidth(), hitBox.getHeight());
     }
     public Rectangle getHitBox(){
         return hitBox;
