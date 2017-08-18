@@ -2,8 +2,8 @@ splatter
 - Delay -
 active: false
 - Duration - 
-lowMin: 5000.0
-lowMax: 5000.0
+lowMin: 50.0
+lowMax: 50.0
 - Count - 
 min: 0
 max: 50
@@ -26,11 +26,11 @@ relative: false
 scalingCount: 3
 scaling0: 1.0
 scaling1: 1.0
-scaling2: 0.50980395
+scaling2: 0.7254902
 timelineCount: 3
 timeline0: 0.0
-timeline1: 0.66
-timeline2: 1.0
+timeline1: 0.17123288
+timeline2: 0.41095892
 - Life Offset - 
 active: false
 - X Offset - 
@@ -132,4 +132,4 @@ additive: true
 behind: false
 premultipliedAlpha: false
 - Image Path -
-particle.png
+/C:/Users/lklkl/Downloads/libgdx-nightly-latest/particle.png

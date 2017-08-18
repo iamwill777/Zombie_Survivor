@@ -33,6 +33,8 @@ public class SPAssetManager {
     private AssetManager mAssetManager = new AssetManager();
     private Texture mTxtZombie;
     private Texture mTxtBullet;
+    private Texture mUpgradedBullet;
+    private Texture upgrade;
     private TextureAtlas mAtlasWalking;
     private Animation mAniCharRight, mAniCharRightDown, mAniCharDown,
             mAniCharDownLeft, mAniCharLeft, mAniCharLeftUp, mAniCharUp, mAniCharUpRight;
@@ -79,6 +81,8 @@ public class SPAssetManager {
         mAssetManager.load("resources/healthpack.png", Texture.class);
         mAssetManager.load("resources/playerdamage.png", Texture.class);
         mAssetManager.load("Zombie/Slime.png", Texture.class);
+        mAssetManager.load("resources/bullet2.jpg", Texture.class);
+        mAssetManager.load("resources/upgrade.png", Texture.class);
         mAssetManager.load("Zombie/male/Attack/maleattacking.atlas", TextureAtlas.class);
         mAssetManager.load("players/character10/right/walkingRight.atlas", TextureAtlas.class);
         for(int i=1; i<=22; i++) {
@@ -106,6 +110,8 @@ public class SPAssetManager {
     public void makeResource() {
         mTxtZombie = mAssetManager.get("resources/zombie.png", Texture.class);
         mTxtBullet = mAssetManager.get("resources/bullet.png", Texture.class);
+        upgrade = mAssetManager.get("resources/upgrade.png", Texture.class);
+        mUpgradedBullet = mAssetManager.get("resources/bullet2.jpg", Texture.class);
         mHealthPack = mAssetManager.get("resources/healthpack.png", Texture.class);
         mPlayerDamage = mAssetManager.get("resources/playerdamage.png", Texture.class);
         //walkingAtlas = mAssetManager.get("Zombie/male/Walk/malewalking.atlas", TextureAtlas.class);
@@ -217,6 +223,7 @@ public class SPAssetManager {
     public com.badlogic.gdx.assets.AssetManager getAssetManager() { return mAssetManager; }
     public Texture getZombie() { return mTxtZombie; }
     public Texture getBullet() { return mTxtBullet; }
+    public Texture getUpgradedBullet (){return mUpgradedBullet;}
     public Animation getAniCharRight() { return mAniCharRight; }
     public Animation getAniCharRightDown() { return mAniCharRightDown; }
     public Animation getAniCharDown() { return mAniCharDown; }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -63,6 +64,10 @@ public class SPPlayer extends Sprite {
     private Sprite hpBar;
     private Sprite hpBarBorder;
 
+    // Particle effect
+    private ParticleEffect pe;
+    private ArrayList<ParticleEffect> effects = new ArrayList<ParticleEffect>();
+
     // draw player position
     BitmapFont mLBPlayerLocation;// = new BitmapFont();
 
@@ -83,6 +88,7 @@ public class SPPlayer extends Sprite {
         weaponPower = 4;
         hitBox = new Rectangle(getX(),getY(),75.f,75.f);
 
+        pe = SPAssetManager.getInstance().getPe();
 
         hpBarTexture = SPAssetManager.getInstance().getHealthBar();
         hpBarBoarderTexture = SPAssetManager.getInstance().getHealthBarBorder();
@@ -165,6 +171,13 @@ public class SPPlayer extends Sprite {
             else
                 items.get(i).drawItem(spritebatch);
         }
+        for (int i = 0; i<effects.size(); i++){
+            effects.get(i).update(Gdx.graphics.getDeltaTime());
+            if (effects.get(i).isComplete())
+                effects.remove(i);
+            else
+                effects.get(i).draw(spritebatch);
+        }
 
         hpBar.setPosition(getX()+15,getY()+115);
         hpBarBorder.setPosition(getX()-240,getY()+19);
@@ -184,6 +197,9 @@ public class SPPlayer extends Sprite {
             for(SPZombie zombie: lstZombie) {
                 if(zombie.getHitBox().overlaps(bullet.getHitBox())) {
                     zombie.hit(weaponPower);
+                    pe.getEmitters().first().setPosition(zombie.getHitBox().x + 35, zombie.getHitBox().y + 25);
+                    pe.start();
+                    effects.add(pe);
                     if (zombie.getHealth()<=0) {
                         bullet.setDead();
                         items.add(new SPItem(zombie));

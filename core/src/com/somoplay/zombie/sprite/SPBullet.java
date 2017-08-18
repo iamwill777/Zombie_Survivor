@@ -14,6 +14,7 @@ public class SPBullet {
     float time;
     int speed;
     boolean mIsAlive;
+    boolean upgraded = false;
 
     public SPBullet(float x, float y, float angle) {
         mIsAlive = true;
@@ -41,6 +42,10 @@ public class SPBullet {
         return mIsAlive;
     }
     public void draw(SpriteBatch batch) {
-        batch.draw(SPAssetManager.getInstance().getBullet(), hitBox.x, hitBox.y, 50, 50);
+        if (!upgraded)
+            batch.draw(SPAssetManager.getInstance().getBullet(), hitBox.x, hitBox.y, 50, 50);
+        else
+            batch.draw(SPAssetManager.getInstance().getUpgradedBullet(), hitBox.x, hitBox.y, 50, 50);
     }
+    public void setUpgrade(){upgraded = true;}
 }
